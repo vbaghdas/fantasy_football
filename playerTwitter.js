@@ -69,14 +69,22 @@ this.twitterFeed = function (player){
 
 
 this.callSuccess = function(response){
-	console.log('Success: ',response.info.status.text);
-	var $tweet = $('<div>',{
-		text: response.info.status.text,
-		class: 'twitter'
+	console.log('Success: ',response.info.name);
+	var $name = $('<span>',{
+		text: response.info.name,
+		class: 'tweetName'
 	})
-	$('.playerTwitter').append($tweet);
-	var $br = $('<br>');
-	$('.twitter').append($br);
+	var $tweet = $('<div>',{
+		class: 'twitterPost'
+	})
+	
+
+	// $('.twitter').append($br);
+	$tweet.append($name).append(response.info.status.text);
+
+	$('.playerTweets').append($tweet);
+
+
 }
 this.callError = function(response){
 	console.log('Error: ',response)

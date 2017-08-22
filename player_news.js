@@ -17,7 +17,7 @@ function PlayerNews () {
         },
         success: function(response) {
             for(var i = 0; i < response.articles.length; i++){
-                console.log(response.articles[i]);
+ 
                 var div1 = $('<div>',{
                     text: response.articles[i].title
                 });

@@ -7,3 +7,25 @@ body {
     box-shadow: 10px 10px 10px #393939;
     color: white;
 }
+.twitterPost{
+	margin: 5%;
+	position: relative;
+	padding-top:5%;
+}
+.twitterPost::before{
+	content: '';
+	border-top: 3px solid white;
+	height: 3px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0%;
+}
+.tweetName{
+	color: red;
+	font-weight: bold;
+}
+.tweetName::after{
+	content: ': ';
+	color: inherit;
+}
