@@ -1,4 +1,4 @@
-# C4.17_hackathon 2
+# C7.17_hackathon 2
 
 Hackathon project involving the combination of different data sources into an application or game
 
