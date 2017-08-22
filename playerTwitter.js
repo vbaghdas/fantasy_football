@@ -77,11 +77,9 @@ this.callSuccess = function(response){
 	var $tweet = $('<div>',{
 		class: 'twitterPost'
 	})
-<<<<<<< HEAD
 	$('.playerTweets').append($tweet);
 	var $br = $('<br><br>');
 	$($tweet).append($br);
-=======
 	
 
 	// $('.twitter').append($br);
@@ -89,8 +87,6 @@ this.callSuccess = function(response){
 
 	$('.playerTweets').append($tweet);
 
-
->>>>>>> 02f81ace687aab897553e77477042293bfcbfcd7
 }
 this.callError = function(response){
 	console.log('Error: ',response)
