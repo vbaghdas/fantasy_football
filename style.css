@@ -4,7 +4,6 @@ body {
 .col-xs-3, .col-xs-6 {
     background-color: black;
     max-height: 100vh;
-    border: solid red 1rem;
     border-radius: 30pt;
     box-shadow: 1rem 1rem 1rem #393939;
     padding: 2rem;
