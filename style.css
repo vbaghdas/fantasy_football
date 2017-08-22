@@ -1,0 +1,9 @@
+body {
+    background-color: #222;
+}
+.col-xs-4 {
+    background-color: black;
+    border-radius: 30pt;
+    box-shadow: 10px 10px 10px #393939;
+    color: white;
+}
