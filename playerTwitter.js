@@ -74,9 +74,9 @@ this.callSuccess = function(response){
 		text: response.info.status.text,
 		class: 'twitter'
 	})
-	$('.playerTwitter').append($tweet);
-	var $br = $('<br>');
-	$('.twitter').append($br);
+	$('.playerTweets').append($tweet);
+	var $br = $('<br><br>');
+	$($tweet).append($br);
 }
 this.callError = function(response){
 	console.log('Error: ',response)
