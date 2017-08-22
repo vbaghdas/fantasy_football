@@ -12,6 +12,7 @@ function PlayerNews () {
         url: 'https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=3fde3b14410a4ffd9ec5807677972117',
         dataType: 'json',
         method: 'get',
+<<<<<<< HEAD
         success: this.success,
         error: this.error
         });
@@ -38,6 +39,29 @@ function PlayerNews () {
                 src: response.articles[i].urlToImage
             });
             $('.playerNews').append(img);
+=======
+        data: {
+
+        },
+        success: function(response) {
+            for(var i = 0; i < response.articles.length; i++){
+ 
+                var div1 = $('<div>',{
+                    text: response.articles[i].title
+                });
+                var div2 = $('<div>',{
+                    text: response.articles[i].description
+                });
+                $('.playerNews').append(div1);
+                $('.playerNews').append(div2);
+                var img = $('<img>',{
+                    src: response.articles[i].urlToImage
+                });
+                $('.playerNews').append(img);
+
+            }
+
+>>>>>>> 02f81ace687aab897553e77477042293bfcbfcd7
 
         }
     }
