@@ -148,4 +148,12 @@ body{
     position: fixed;
     top: 20%;
     left: 19.3%;
+
+.active {
+    background-color: darkblue;
+}
+
+.dropdown-menu > li:hover {
+    background-color: gray;
+    opacity: .8;
 }
