@@ -1,6 +1,7 @@
 body{
     background: url(background.jpg) no-repeat fixed center;
     font-family: 'Roboto', sans-serif;
+    overflow-y:hidden;
 }
 
 
@@ -141,4 +142,10 @@ body{
     margin-top: 3vh;
     width: 40%;
     border-radius: 15pt;
+}
+
+.modalNews{
+    position: fixed;
+    top: 20%;
+    left: 19.3%;
 }
