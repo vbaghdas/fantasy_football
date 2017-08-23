@@ -33,3 +33,9 @@ body {
 	content: ': ';
 	color: inherit;
 }
+
+.dropdown-menu {
+    width: 30vw;
+    height: 60vh;
+    overflow: auto;
+}
