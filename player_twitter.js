@@ -78,7 +78,7 @@ this.twitterFeed = function (team){
 	success: this.callSuccess,
 	error: this.callError
 })
-}
+};
 
 
 this.callSuccess = function(response){
@@ -89,16 +89,19 @@ this.callSuccess = function(response){
 	var $name = $('<span>',{
 		text: response.info.name,
 		class: 'tweetName'
-	})
+	});
 	var $tweet = $('<div>',{
 		class: 'twitterPost'
-	})
-	$('.playerTweets').append($name).append($tweet);
+	});
+    var $i = $('<i>',{
+        class: 'fa fa-twitter'
+    });
+	$('.playerTweets').append($i).append($name).append($tweet);
 	$tweet.append(response.info.status.text);
 	$('.playerTweets').append($tweet);
 
 
-}
+};
 
 this.callError = function(response){
 	console.log('Error: ',response)

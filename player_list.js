@@ -41,7 +41,7 @@ function Player_list() {
             this.selected_player($player_item[0], i, team);
             $($player_list).append($player_item);
         }
-        console.log(this.players)
+        // console.log(this.players)
         $('.dropdown').append($player_list);
     };
 

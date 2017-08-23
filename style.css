@@ -3,10 +3,20 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+
+/*Sports Ticker Row*/
+
 .sportsTicker{
-    height: 50px;
+    height: 8vh;
     overflow: hidden;
     position: relative;
+    background-color: black;
+    border-radius: 30pt;
+    box-sizing:border-box;
+    box-shadow: 1rem 1rem 1rem #222;
+    padding: 2rem;
+    opacity: 0.9;
+    color: white;
 }
 .sportsTicker .tickerItem {
     font-size: 3vh;
@@ -15,35 +25,28 @@ body{
     margin-left: 0;
     left: 100%;
     top: 30%;
-    white-space: nowrap;
 }
 
 .tickerItem span {
     margin-right: 20%;
 }
 
+
+/*Headlines Row*/
+
 .headlines{
-    display:flex; justify-content:space-between ; margin:30px 0;
+    #display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
 }
 
-.col-xs-12{
+.panel-primary{
     background-color: black;
-    height: 8vh;
-    border-radius: 30pt;
-    box-sizing:border-box;
-    box-shadow: 1rem 1rem 1rem #222;
-    padding: 2rem;
-    opacity: 0.9;
-    color: white;
-}
-
-.col-xs-4{
-    background-color: black;
-    max-height: 80vh;
+    height: 80vh;
     border-radius: 30pt;
     border: solid black;
     box-sizing:border-box;
-    flex-basis: 30%;
+    #flex-basis: 30%;
     box-shadow: 1rem 1rem 1rem #222;
     padding: 2rem;
     opacity: 0.9;
@@ -51,39 +54,91 @@ body{
     overflow: scroll;
 }
 
+@keyframes fadeIn { from { opacity: 0; } to { opacity: .9; } }
+
+.panel-primary {
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+.panel-primary.one {
+    animation-delay: 0.4s;
+}
+
+.panel-primary.two {
+    animation-delay: 0.8s;
+}
+
+.panel-primary.three {
+    animation-delay: 1.2s;
+}
+
 .panel-heading{
     border-radius: 30pt;
+    text-align: center;
 }
+
+
+/*Player List*/
+
+#player-list{
+    width: 100%;
+}
+
+.dropdown-menu{
+    width: 30vw;
+    height: 60vh;
+    overflow: auto;
+    background: black;
+    color: white;
+}
+
 
 /*Twitter*/
 
 .twitterPost{
-	margin: 0%;
-	position: relative;
-	padding-top:1%;
-	margin-bottom: 2%;
-	
+    margin: 0%;
+    position: relative;
+    padding: 1.5rem;
+    margin-bottom: 2%;
+    background-color: silver;
+    color: black;
+    border-radius: 15pt;
+    font-weight: bold;
 }
 .twitterPost::before{
-	content: '';
-	#border-bottom: 3px solid white;
-	height: 3px;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0%;
-}
-.tweetName{
-	color: red;
-	font-weight: bold;
-}
-.tweetName::after{
-	content: ': ';
-	color: inherit;
+    content: '';
+    #border-bottom: 3px solid white;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0%;
 }
 
-.dropdown-menu {
-    width: 30vw;
-    height: 60vh;
-    overflow: auto;
+.tweetName{
+    color: #00BFFF;
+    font-weight: bold;
+    padding-top: 2%;
+}
+.tweetName::after{
+    #content: ': ';
+    color: inherit;
+}
+
+
+/*News*/
+
+.playerNews h3{
+    color: goldenrod;
+}
+
+.img-rounded{
+    display: block;
+    margin: auto;
+    margin-top: 3vh;
+    width: 40%;
+    border-radius: 15pt;
 }
