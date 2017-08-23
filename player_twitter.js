@@ -1,6 +1,7 @@
 $(document).ready(function(){
 playertwitter = new PlayerTwitter;
 // playertwitter.twitterPlayer();
+
 })
 
 function PlayerTwitter(){
@@ -11,6 +12,7 @@ this.twitterRetweet = function (){
 	// var tweetRecount = response.info.statuses[i].retweet_count;
 	this.tweetRecount = null;
 	this.tweet = null;
+	this.teamName = '';
 	for(var i = 0; i < response.tweets.statuses.length; i++){
 		if(this.tweetRecount < response.info.statuses[i].retweet_count){
 			this.tweet = response.info.statuses[i].text;
@@ -58,9 +60,12 @@ this.teamArray = {
 
 this.twitterFeed = function (team){
 	var twitterHandle = null;
+	this.teamName = team;
+	teamYoutube.getName(team);
+	teamYoutube.youtubeAPI();
 	for(var i in this.teamArray){
 		if(team === i){
-			this.twitterHandle = this.teamArray[i]
+			twitterHandle = this.teamArray[i]
 		}
 	}
 	console.log('ajaxCall function');
@@ -72,7 +77,7 @@ this.twitterFeed = function (team){
 		// search_term: hashtag
 		// user_id:
 		action: 'user',
-		screen_name: team
+		screen_name: twitterHandle
 		// include_entities: false
 	},
 	success: this.callSuccess,
