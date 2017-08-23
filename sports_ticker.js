@@ -1,4 +1,7 @@
 
+var timePerTickerTraversal = 36000;
+
+
 $(document).ready(function() {
 
     sportsTicker = new SportsTicker;
@@ -7,6 +10,7 @@ $(document).ready(function() {
 });
 
 function SportsTicker () {
+
     this.ajaxCall = function () {
         $.ajax({
             url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/daily_game_schedule.json?fordate=20171203',
@@ -19,15 +23,24 @@ function SportsTicker () {
                 "Authorization": "Basic " + btoa("vbaghdas" + ":" + "consoles1")
             }
         });
-    },
-        this.success = function (response) {
-            // for (var i = 0; i < response.articles.length; i++) {
-            //     console.log('success', response.articles[i]);
-            // }
-            console.log('success for sports ticker', response.dailygameschedule.gameentry);
-            this.error = function (response) {
-                console.log('error', response);
-            }
+    };
+    this.success = function (response) {
+        var $tickerItem = $('<marquee>',{
+            class: 'tickerItem',
+            scrollamount: '15'
+        });
+        for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
+            var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Name;
+            var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Name;
+            var $span = $('<span>',{
+                text: awayTeam + ' vs ' + homeTeam
+            });
+            $($tickerItem).append($span);
+        }
+        $('.sportsTicker').append($tickerItem);
+    };
+    this.error = function (response) {
+        console.log('error', response);
         }
 }
 
@@ -35,5 +48,49 @@ function SportsTicker () {
 var sportsTicker = null;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function SportsTicker () {
+// var tickerItems = [];
+// var currentTicker = 0;
+//
+// function transitionItem(){
+//     tickerItems[currentTicker].animate({
+//         left: '-25%'
+//     }, timePerTickerTraversal,'linear',function(){
+//         $(this).css('left','100%')
+//     });
+//
+// }
+// function startTransition(){
+//     setInterval(function(){
+//         console.log('starting '+currentTicker)
+//         transitionItem();
+//         currentTicker++;
+//         if(currentTicker===tickerItems.length){
+//             $('.tickerItem').css('left','100%');
+//             currentTicker = 0;
+//         }
+//
+//     },timePerTickerTraversal/tickerItems.length);
+//
+// }
 
 
