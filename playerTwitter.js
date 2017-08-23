@@ -6,23 +6,6 @@ playertwitter.twitterPlayer();
 function PlayerTwitter(){
 console.log('PlayerTwitter function');
 
-this.playerList = [
-	'Justin Tucker', 
-	'Doug Baldwin', 
-	'Todd Gurley',
-	'Travis Kelce',
-	'Tyreek Hill',
-	'Bilal Powell',
-	'Julian Edelman',
-	'Tevin Coleman',
-	'Sammy Watkins',
-	'Marcus Mariota',
-	'Rob Kelley',
-	'Kenny Britt',
-	'CJ Prosise',
-	'Chris Boswell',
-	'Eli Manning'
-	];
 
 this.twitterNames = [
 	'jtuck9',
@@ -49,6 +32,19 @@ this.twitterPlayer = function(){
 	}
 }
 
+this.twitterRetweet = function (){
+	// var tweetRecount = response.info.statuses[i].retweet_count;
+	this.tweetRecount = null;
+	this.tweet = null;
+	for(var i = 0; i < response.tweets.statuses.length; i++){
+		if(this.tweetRecount < response.info.statuses[i].retweet_count){
+			this.tweet = response.info.statuses[i].text;
+			this.tweetRecount = response.info.statuses[i].retweet_count;
+		}
+	}
+	return this.tweet;
+}
+
 this.twitterFeed = function (player){
 	console.log('ajaxCall function');
 	$.ajax({
@@ -56,10 +52,10 @@ this.twitterFeed = function (player){
 	method: 'post',
 	url: 'http://s-apis.learningfuze.com/hackathon/twitter/index.php',
 	data: {
-		// search_term: 'Odell Beckham JR.'
+		search_term: '#ODELL'
 		// user_id:
-		action: 'user',
-		screen_name: player
+		// action: 'user',
+		// screen_name: '#NFL #Giants #ODELL'
 		// include_entities: false
 	},
 	success: this.callSuccess,
@@ -69,21 +65,19 @@ this.twitterFeed = function (player){
 
 
 this.callSuccess = function(response){
-	console.log('Success: ',response.info.name);
-	var $name = $('<span>',{
-		text: response.info.name,
-		class: 'tweetName'
-	})
+	// console.log('Success: ',response);
+	console.log(response);
+	// var $name = $('<span>',{
+	// 	text: response.info.name,
+	// 	class: 'tweetName'
+	// })
 	var $tweet = $('<div>',{
 		class: 'twitterPost'
 	})
 	$('.playerTweets').append($tweet);
-	var $br = $('<br><br>');
-	$($tweet).append($br);
-	
 
-	// $('.twitter').append($br);
-	$tweet.append($name).append(response.info.status.text);
+
+	// $tweet.append($name).append(response.info.status.text);
 
 	$('.playerTweets').append($tweet);
 
