@@ -1,36 +1,11 @@
 $(document).ready(function(){
 playertwitter = new PlayerTwitter;
-playertwitter.twitterPlayer();
+// playertwitter.twitterPlayer();
 })
 
 function PlayerTwitter(){
 console.log('PlayerTwitter function');
 
-
-this.twitterNames = [
-	'jtuck9',
-	'DougBaldwinJr',
-	'TG3II',
-	'tkelce',
-	'Chiefs',
-	'bilalpowell29',
-	'Edelman11',
-	'Teco_Raww',
-	'sammywatkins',
-	'Titans',
-	'Fatrob32',
-	'KennyBritt_18',
-	'Prosisely_22',
-	'WizardOfBoz09',
-	'Giants'
-	];
-//this.twitterPlayer();
-this.twitterPlayer = function(){
-	for(var i = 0; i < this.twitterNames.length; i++){
-		var playerAtIndex = this.twitterNames[i]
-		this.twitterFeed(playerAtIndex);
-	}
-}
 
 this.twitterRetweet = function (){
 	// var tweetRecount = response.info.statuses[i].retweet_count;
@@ -43,19 +18,61 @@ this.twitterRetweet = function (){
 		}
 	}
 	return this.tweet;
+
 }
 
-this.twitterFeed = function (player){
+this.teamArray = {
+	Cardinals: 'AZCardinals',
+	Giants: 'Giants',
+	Colts: 'Colts',
+	Eagles: 'Eagles',
+	Jaguars: 'Jaguars',
+	Panthers: 'Panthers',
+	Bears: 'ChicagoBears',
+	Lions: 'Lions',
+	'49ers': '49ers',
+	Browns: 'Browns',
+	Redskins: 'Redskins',
+	Buccaneers: 'TBBuccaneers',
+	Packers: 'packers',
+	Chiefs: 'Chiefs',
+	Saints: 'Saints',
+	Patriots: 'Patriots',
+	Vikings: 'Vikings',
+	Bills: 'buffalobills',
+	Bengals: 'Bengals',
+	Rams: 'RamsNFL',
+	Seahawks: 'Seahawks',
+	Ravens: 'Ravens',
+	Dolphins: 'MiamiDolphins',
+	Steelers: 'steelers',
+	Titans: 'Titans',
+	Broncos: 'Broncos',
+	Texans: 'HoustonTexans',
+	Jets: 'nyjets',
+	Falcons: 'AtlantaFalcons',
+	Raiders: 'RAIDERS',
+	Cowboys: 'dallascowboys',
+	Chargers: 'Chargers'
+	}
+
+this.twitterFeed = function (team){
+	var twitterHandle = null;
+	for(var i in this.teamArray){
+		if(team === i){
+			this.twitterHandle = this.teamArray[i]
+		}
+	}
 	console.log('ajaxCall function');
 	$.ajax({
 	dataType: 'json',
 	method: 'post',
 	url: 'http://s-apis.learningfuze.com/hackathon/twitter/index.php',
 	data: {
-		search_term: '#ODELL'
+		// search_term: hashtag
 		// user_id:
-		// action: 'user',
-		// screen_name: '#NFL #Giants #ODELL'
+		action: 'user',
+		screen_name: team
 		// include_entities: false
 	},
 	success: this.callSuccess,
@@ -67,25 +84,22 @@ this.twitterFeed = function (player){
 this.callSuccess = function(response){
 	// console.log('Success: ',response);
 	console.log(response);
-	// var $name = $('<span>',{
-	// 	text: response.info.name,
-	// 	class: 'tweetName'
-	// })
+	var playerList = null
+
+	var $name = $('<span>',{
+		text: response.info.name,
+		class: 'tweetName'
+	})
 	var $tweet = $('<div>',{
 		class: 'twitterPost'
 	})
+	$('.playerTweets').append($name).append($tweet);
+	$tweet.append(response.info.status.text);
 	$('.playerTweets').append($tweet);
-<<<<<<< HEAD
-	
-=======
->>>>>>> 00c042300951cf01b5f543c97eaa7ef7de3c9f1a
 
-
-	// $tweet.append($name).append(response.info.status.text);
-
-	$('.playerTweets').append($tweet);
 
 }
+
 this.callError = function(response){
 	console.log('Error: ',response)
 }
