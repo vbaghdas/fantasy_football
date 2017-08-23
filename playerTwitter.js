@@ -75,6 +75,10 @@ this.callSuccess = function(response){
 		class: 'twitterPost'
 	})
 	$('.playerTweets').append($tweet);
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 00c042300951cf01b5f543c97eaa7ef7de3c9f1a
 
 
 	// $tweet.append($name).append(response.info.status.text);
