@@ -18,6 +18,11 @@ function PlayerNews () {
     },
         this.success = function (response) {
             for (var i = 0; i < response.articles.length; i++) {
+                var img = $('<img>', {
+                    src: response.articles[i].urlToImage,
+                    class: 'img-rounded'
+                });
+                $('.playerNews').append(img);
                 var $h3 = $('<h3>', {
                     text: response.articles[i].title,
                     class: 'title'
@@ -32,11 +37,7 @@ function PlayerNews () {
                 });
                 $('.playerNews').append($h3);
                 $('.playerNews').append($div);
-                $('.playerNews').append($a);
-                var img = $('<img>', {
-                    src: response.articles[i].urlToImage
-                });
-                $('.playerNews').append(img);
+                $($div).append($a);
             }
             this.error = function (response) {
                 console.log('error', response);

@@ -32,8 +32,9 @@ function SportsTicker () {
         for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
             var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Name;
             var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Name;
+            var time = response.dailygameschedule.gameentry[i].time;
             var $span = $('<span>',{
-                text: awayTeam + ' vs ' + homeTeam
+                text: awayTeam + ' vs ' + homeTeam + ' @ ' + time
             });
             $($tickerItem).append($span);
         }
