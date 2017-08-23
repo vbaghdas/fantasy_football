@@ -15,18 +15,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class='dropdown'>
-    <button id='player-list' class="btn btn-primary dropdown-toggle" type="button" data-toggle='dropdown'>Select Players</button>
-</div>
 
 <div class="container-fluid">
     <div class="row ticker">
-        <div class="col-xs-12 sportsTicker"><h3>Michael Vick goes to jail for animal cruelty...</h3></div>
+        <div class="col-xs-12 sportsTicker"></div>
     </div>
     <div class="row headlines">
         <div class="panel panel-primary col-xs-4">
             <div class="panel-heading">Players</div>
-            <div class="panel-body playerList"></div>
+            <div class="panel-body playerList">
+                <div class='dropdown'>
+                    <button id='player-list' class="btn btn-primary dropdown-toggle" type="button" data-toggle='dropdown'>Select Players</button>
+                </div>
+            </div>
         </div>
         <div class="panel panel-primary col-xs-4">
             <div class="panel-heading">Tweets</div>
