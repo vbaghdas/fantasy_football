@@ -78,8 +78,6 @@ this.callSuccess = function(response){
 		class: 'twitterPost'
 	})
 	$('.playerTweets').append($tweet);
-	var $br = $('<br><br>');
-	$($tweet).append($br);
 	
 
 	// $('.twitter').append($br);

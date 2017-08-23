@@ -13,12 +13,11 @@ function PlayerNews () {
             dataType: 'json',
             method: 'get',
             success: this.success,
-            error: this.error
+            error: this.error,
         });
     },
         this.success = function (response) {
             for (var i = 0; i < response.articles.length; i++) {
-                console.log('success', response.articles[i]);
                 var $h3 = $('<h3>', {
                     text: response.articles[i].title,
                     class: 'title'
@@ -33,7 +32,7 @@ function PlayerNews () {
                 });
                 $('.playerNews').append($h3);
                 $('.playerNews').append($div);
-                $('.player').append($a);
+                $('.playerNews').append($a);
                 var img = $('<img>', {
                     src: response.articles[i].urlToImage
                 });
