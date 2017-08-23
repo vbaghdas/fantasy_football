@@ -37,17 +37,19 @@ function Player_list() {
             var $player_item = $('<li>',{
                 text: this.players[i].first_name + ' ' + this.players[i].last_name + ' , ' + this.players[i].team
             });
-            this.selected_player($player_item[0], i);
+            var team = this.players[i].team;
+            this.selected_player($player_item[0], i, team);
             $($player_list).append($player_item);
         }
         $('.dropdown').append($player_list);
     };
 
-    this.selected_player = function(element, i) {
-        element.player_info = $(element).text();
+    this.selected_player = function(element, i, team) {
+        element.player_info = $(element);
         $(element).click(function(){
             $('.playerList').append(element);
-            console.log($(element).text())
+            console.log($(element).text());
+            playertwitter.twitterFeed(team)
         })
         $(element).push
     }
