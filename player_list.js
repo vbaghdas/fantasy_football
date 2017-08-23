@@ -5,6 +5,7 @@ $(document).ready(function(){
 function Player_list() {
     var football_nerd_api = '5fau8mwe74me';
     this.players = [];
+    this.twitter_array = [];
     $.ajax({
         method: 'GET',
         url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/roster_players.json?fordate=20171029',
@@ -14,15 +15,14 @@ function Player_list() {
             "Authorization": "Basic " + btoa("vbaghdas" + ":" + "consoles1")
         },
         success: (response) => {
-            for(var i = 0; i < 29; i++) {
+            for(var i = 0; i < response.rosterplayers.playerentry.length; i++) {
                 this.players.push({
                     first_name: response.rosterplayers.playerentry[i].player.FirstName,
                     last_name: response.rosterplayers.playerentry[i].player.LastName,
-                    team: (response.rosterplayers.playerentry[i].team) ? response.rosterplayers.playerentry[i].team.Name : 'no team'
-
+                    team: (response.rosterplayers.playerentry[i].team) ? response.rosterplayers.playerentry[i].team.Name : 'no team',
                 });
-            }
-            console.log(this.players)
+                this.players[i].hash_list = '#' + this.players[i].team + ' ' + '#' +this.players[i].first_name + this.players[i].last_name + ' ' + '#' + 'nfl'
+            } console.log(this.players)
         }
     });
     this.init = function(){
@@ -33,9 +33,9 @@ function Player_list() {
         var $player_list = $('<ul>',{
             class: 'dropdown-menu'
         });
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < this.players.length; i++) {
             var $player_item = $('<li>',{
-                text: i + 'hello',
+                text: this.players[i].first_name + ' ' + this.players[i].last_name + ' , ' + this.players[i].team
             });
             this.selected_player($player_item[0], i);
             $($player_list).append($player_item);
@@ -46,9 +46,10 @@ function Player_list() {
     this.selected_player = function(element, i) {
         element.player_info = $(element).text();
         $(element).click(function(){
-            $('.container .row').append(element);
+            $('.playerList').append(element);
             console.log($(element).text())
         })
+        $(element).push
     }
     this.init();
 
