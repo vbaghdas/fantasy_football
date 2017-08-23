@@ -4,8 +4,9 @@ $(document).ready(function(){
 
 function Player_list() {
     var football_nerd_api = '5fau8mwe74me';
+    this.team_array = Object.keys(playertwitter.teamArray)
     this.players = [];
-    this.twitter_array = [];
+    this.active_team = '';
     $.ajax({
         method: 'GET',
         url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/roster_players.json?fordate=20171029',
@@ -26,33 +27,58 @@ function Player_list() {
         }
     });
     this.init = function(){
-        this.create_player_list();
-    }
+        this.create_team_list();
+    };
 
-    this.create_player_list = function() {
+    this.create_player_list = () => {
+        debugger;
+        var filter_player = this.players.filter((player) => {return player.team === this.active_team});
         var $player_list = $('<ul>',{
             class: 'dropdown-menu'
         });
-        for (var i = 0; i < this.players.length; i++) {
+        for (var i = 0; i < filter_player.length; i++) {
             var $player_item = $('<li>',{
-                text: this.players[i].first_name + ' ' + this.players[i].last_name + ' , ' + this.players[i].team
+                text: filter_player[i].first_name + ' ' + filter_player[i].last_name + ' , ' + filter_player[i].team
             });
-            var team = this.players[i].team;
+            var team = filter_player[i].team;
             this.selected_player($player_item[0], i, team);
             $($player_list).append($player_item);
         }
-        // console.log(this.players)
-        $('.dropdown').append($player_list);
+        $('#player-dropdown').append($player_list);
+    };
+
+    this.create_team_list = function() {
+        var $team_list = $('<ul>', {
+            class: 'dropdown-menu'
+        });
+        for (var i = 0; i < this.team_array.length; i++) {
+            var $team_item = $('<li>', {
+                text: this.team_array[i],
+            });
+            this.selected_team($team_item[0], i);
+            $($team_list).append($team_item);
+        }
+        $('#team-dropdown').append($team_list);
     };
 
     this.selected_player = function(element, i, team) {
         element.player_info = $(element);
         $(element).click(function(){
             $('.playerList').append(element);
-            $(element).player_info
             playertwitter.twitterFeed(team)
         });
-    }
+    };
+
+    this.selected_team = (function(player_list) { return function(element, i) {
+        element.team_info = this.team_array[i];
+        $(element).on('click', function(){
+            $('#team-dropdown li').removeClass('active');
+            $(this).addClass('active');
+            $('#player-dropdown').find('ul').slice(0).remove();
+            player_list.active_team = this.team_info;
+            player_list.create_player_list();
+        })
+    }})(this);
     this.init();
 
 }

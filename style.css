@@ -143,3 +143,11 @@ body{
     border-radius: 15pt;
 }
 
+.active {
+    background-color: darkblue;
+}
+
+.dropdown-menu > li:hover {
+    background-color: gray;
+    opacity: .8;
+}
