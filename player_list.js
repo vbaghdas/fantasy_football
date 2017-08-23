@@ -22,7 +22,7 @@ function Player_list() {
                     team: (response.rosterplayers.playerentry[i].team) ? response.rosterplayers.playerentry[i].team.Name : 'no team',
                 });
                 this.players[i].hash_list = '#' + this.players[i].team + ' ' + '#' +this.players[i].first_name + this.players[i].last_name + ' ' + '#' + 'nfl'
-            } console.log(this.players)
+            }
         }
     });
     this.init = function(){
@@ -37,19 +37,21 @@ function Player_list() {
             var $player_item = $('<li>',{
                 text: this.players[i].first_name + ' ' + this.players[i].last_name + ' , ' + this.players[i].team
             });
-            this.selected_player($player_item[0], i);
+            var team = this.players[i].team;
+            this.selected_player($player_item[0], i, team);
             $($player_list).append($player_item);
         }
+        console.log(this.players)
         $('.dropdown').append($player_list);
     };
 
-    this.selected_player = function(element, i) {
-        element.player_info = $(element).text();
+    this.selected_player = function(element, i, team) {
+        element.player_info = $(element);
         $(element).click(function(){
             $('.playerList').append(element);
-            console.log($(element).text())
-        })
-        $(element).push
+            $(element).player_info
+            playertwitter.twitterFeed(team)
+        });
     }
     this.init();
 
