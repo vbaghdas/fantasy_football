@@ -25,20 +25,38 @@ function SportsTicker () {
         });
     };
     this.success = function (response) {
-        var $tickerItem = $('<marquee>',{
-            class: 'tickerItem',
-            scrollamount: '15'
-        });
+        var teamScheduleArr = [];
         for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
             var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Name;
             var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Name;
             var time = response.dailygameschedule.gameentry[i].time;
-            var $span = $('<span>',{
-                text: awayTeam + ' vs ' + homeTeam + ' @ ' + time
-            });
-            $($tickerItem).append($span);
+            teamScheduleArr.push(awayTeam + ' vs ' + homeTeam + ' @ ' + time);
         }
-        $('.sportsTicker').append($tickerItem);
+        function initializeCrawler(){
+            var teamScheduleArrItems = teamScheduleArr.slice();
+            var crawlTime = 2000;
+            var newCrawlerTime = 6000;
+            setInterval(addItemToCrawler, crawlTime);
+            function addItemToCrawler(){
+                if(teamScheduleArrItems.length < 1){
+                    return;
+                }
+                var nextItem = teamScheduleArrItems.shift();
+                var $div = $('<div>', {
+                    text: nextItem,
+                    class: 'tickerItem'
+                });
+                $('.sportsTicker').append($div);
+                $div.animate({left: "-20%"}, newCrawlerTime, 'linear', function(){
+                    teamScheduleArrItems.push($(this).text());
+                    $(this).remove();
+                });
+            }
+        }
+
+        initializeCrawler(teamScheduleArr);
+
+
     };
     this.error = function (response) {
         console.log('error', response);
@@ -64,7 +82,21 @@ var sportsTicker = null;
 
 
 
-
+// this.success = function (response) {
+//     var $tickerItem = $('<marquee>',{
+//         class: 'tickerItem',
+//         scrollamount: '15'
+//     });
+//     for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
+//         var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Name;
+//         var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Name;
+//         var $span = $('<span>',{
+//             text: awayTeam + ' vs ' + homeTeam
+//         });
+//         $($tickerItem).append($span);
+//     }
+//     $('.sportsTicker').append($tickerItem);
+// };
 
 
 

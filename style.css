@@ -1,7 +1,6 @@
 body{
     background: url(background.jpg) no-repeat fixed center;
     font-family: 'Roboto', sans-serif;
-    overflow-y:hidden;
 }
 
 
@@ -22,16 +21,10 @@ body{
 .sportsTicker .tickerItem {
     font-size: 3vh;
     color: limegreen;
-    display: inline-block;
-    margin-left: 0;
+    position: absolute;
     left: 100%;
-    top: 30%;
+    white-space: nowrap;
 }
-
-.tickerItem span {
-    margin-right: 20%;
-}
-
 
 /*Headlines Row*/
 
@@ -148,6 +141,11 @@ body{
     position: fixed;
     top: 20%;
     left: 19.3%;
+}
+
+#readMore{
+    border-radius: 30pt;
+}
 
 .active {
     background-color: darkblue;
