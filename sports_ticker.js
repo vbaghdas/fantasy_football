@@ -36,7 +36,7 @@ function SportsTicker () {
                 if(teamScheduleArrItems.length < 1){
                     return;
                 }
-                var nextItem = teamScheduleArrItems.shift();
+                var nextItem = teamScheduleArrItems.shift(); //add
                 var $div = $('<div>', {
                     text: nextItem,
                     class: 'tickerItem'
@@ -51,7 +51,7 @@ function SportsTicker () {
         initializeCrawler(teamScheduleArr);
     };
     this.error = function (response) {
-        console.log('error', response);
+        console.log('Error: ',response)
         }
 }
 
