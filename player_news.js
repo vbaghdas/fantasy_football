@@ -13,9 +13,9 @@ function PlayerNews () {
             dataType: 'json',
             method: 'get',
             success: this.success,
-            error: this.error,
+            error: this.error
         });
-    },
+    };
     this.success = function (response) {
         for (var i = 0; i < response.articles.length; i++) {
             var img = $('<img>', {
