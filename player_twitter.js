@@ -57,7 +57,7 @@ this.teamArray = {
 	Raiders: 'RAIDERS',
 	Cowboys: 'dallascowboys',
 	Chargers: 'Chargers'
-	}
+	};
 
 this.twitterFeed = function (team){
 	var twitterHandle = null;
@@ -129,12 +129,20 @@ this.callSuccess = function(response){
     		href: this.twitterURL,
     		target: '_blank'
     });
-    $titleDiv.append($twitterAtag, $name, $aTag);
-	$('.playerTweets').append($titleDiv, $tweet);
-	$tweet.append(response.info.status.text);
-	// $('.playerTweets').append($tweet);
-	$aTag.append($youtubeLogo);
-	$twitterAtag.append($twitterLogo);
+    var i = 0;
+    (function() {
+        while($(`.titleContainer:eq(${i})`)['0'] !== undefined ) {
+            if($(`.titleContainer:eq(${i}) .tweetName`).text() === response.info.name) {
+            	return
+			} i++
+		}
+        $titleDiv.append($twitterAtag, $name, $aTag);
+        $('.playerTweets').append($titleDiv, $tweet);
+        $tweet.append(response.info.status.text);
+        // $('.playerTweets').append($tweet);
+        $aTag.append($youtubeLogo);
+        $twitterAtag.append($twitterLogo);
+    })();
 };
 
 this.callError = function(response){

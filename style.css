@@ -26,12 +26,13 @@ body{
     white-space: nowrap;
 }
 
+
 /*Headlines Row*/
 
 .headlines{
-    #display: flex;
-    #justify-content: space-between;
-    margin: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .panel-primary{
@@ -40,12 +41,13 @@ body{
     border-radius: 30pt;
     border: solid black;
     box-sizing:border-box;
-    #flex-basis: 30%;
     box-shadow: 1rem 1rem 1rem #222;
     padding: 2rem;
     opacity: 0.9;
     color: white;
     overflow: scroll;
+    margin-top: 3.5vh;
+
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: .9; } }
@@ -59,14 +61,17 @@ body{
 
 .panel-primary.one {
     animation-delay: 0.4s;
+    width: 23%;
 }
 
 .panel-primary.two {
     animation-delay: 0.8s;
+    width: 23%;
 }
 
 .panel-primary.three {
     animation-delay: 1.2s;
+    width: 48%;
 }
 
 .panel-heading{
@@ -146,7 +151,6 @@ body{
 .titleContainer {
     display: flex;
     justify-content: space-between;
-    font-size: 1.2vw;
 }
 
 .tweetName{
@@ -180,23 +184,46 @@ body{
     left: 19.3%;
 }
 
-/*@media screen and (min-width: 600px){*/
-    /*.headlines {*/
-        /*flex-direction: row;*/
-    /*}*/
-    /*.headlines > * {*/
-        /*flex: 1;*/
-    /*}*/
-    /*.panel-primary .two {*/
-        /*order: -1;*/
-    /*}*/
-    /*.panel-primary > .one {*/
-        /*flex: 3;*/
-    /*}*/
-/*}*/
+/*Media queries to collapse headlines row*/
 
-/*@media screen and (max-width: 600px){*/
-    /*.headlines {*/
-        /*flex-direction: column;*/
-    /*}*/
-/*}*/
+@media screen and (max-width: 991px){
+    .headlines {
+        justify-content: center;
+    }
+
+    .panel-primary.one {
+        animation-delay: 0.4s;
+        width: 45%;
+    }
+
+    .panel-primary.two {
+        animation-delay: 0.8s;
+        width: 45%;
+    }
+
+    .panel-primary.three {
+        animation-delay: 1.2s;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .headlines {
+        justify-content: center;
+    }
+
+    .panel-primary.one {
+        animation-delay: 0.4s;
+        width: 95%;
+    }
+
+    .panel-primary.two {
+        animation-delay: 0.8s;
+        width: 95%;
+    }
+
+    .panel-primary.three {
+        animation-delay: 1.2s;
+        width: 95%;
+    }
+}
