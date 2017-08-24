@@ -144,7 +144,6 @@ this.callSuccess = function(response){
         $twitterAtag.append($twitterLogo);
     })();
 };
-
 this.callError = function(response){
 	console.log('Error: ',response)
 }
