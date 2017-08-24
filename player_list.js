@@ -68,7 +68,7 @@ function Player_list() {
                 class: 'added_player',
                 text: this.textContent,
             });
-            debugger;
+  
             // var i = 0;
             // while($(`.added_player:eq(${i})`)["0"] !== 'undefined') {
             //     debugger;
