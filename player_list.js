@@ -8,6 +8,7 @@ function Player_list() {
     this.players = [];
     this.active_team = '';
     this.filter_player = [];
+    this.display_list = [];
     $.ajax({
         method: 'GET',
         url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/roster_players.json?fordate=20171029',
@@ -39,10 +40,13 @@ function Player_list() {
         });
         for (var i = 0; i < this.filter_player.length; i++) {
             var $player_item = $('<li>',{
-                text: this.filter_player[i].first_name + ' ' + this.filter_player[i].last_name + ' , ' + this.filter_player[i].team
+                text: this.filter_player[i].first_name + ' ' + this.filter_player[i].last_name + ' , ' + this.filter_player[i].team,
+                id: i
             });
             this.selected_player($player_item[0], this.filter_player[i]);
-            $($player_list).append($player_item);
+            if(this.check_player_list(i) === false) {
+                $($player_list).append($player_item);
+            }
         }
         $('#player-dropdown').append($player_list);
     };
@@ -68,23 +72,28 @@ function Player_list() {
                 class: 'added_player',
                 text: this.textContent,
             });
-            debugger;
-            // var i = 0;
-            // while($(`.added_player:eq(${i})`)["0"] !== 'undefined') {
-            //     debugger;
-            //     if(player_list.filter_player.indexOf($(`.added_player:eq(${i})`)["0"].player_info) > -1) {
-            //         $(`.added_player:eq(${i})`)["0"].remove();
-            //     }
-            //     i++;
-            // }
+            player_list.remove_players(this.id);
+
             $added_player[0].player_info = player_obj;
             $('.playerList').append($added_player);
             playertwitter.twitterFeed(player_obj.team);
             var num = 0;
-            console.log($(`.added_player:eq(${num})`)["0"].player_info);
         });
     }})(this);
 
+    this.check_player_list = (player_i) => {
+        for(var i = 0; i < this.filter_player.length; i++) {
+            if(!$(`.added_player:eq(${i})`)['0']) {
+                return false
+            }
+            if(this.filter_player[player_i] === $(`.added_player:eq(${i})`)["0"].player_info){
+                return true
+            }
+        } return false
+    }
+    this.remove_players = function(id) {
+        $(`[id=${id}]`).remove()
+    }
     this.selected_team = (function(player_list) { return function(element, i) {
         element.team_info = this.team_array[i];
         $(element).on('click', function(){
