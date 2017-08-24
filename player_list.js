@@ -73,6 +73,7 @@ function Player_list() {
                 text: this.textContent,
             });
             player_list.remove_players(this.id);
+
             $added_player[0].player_info = player_obj;
             $('.playerList').append($added_player);
             playertwitter.twitterFeed(player_obj.team);

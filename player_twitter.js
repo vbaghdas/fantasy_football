@@ -89,10 +89,11 @@ this.twitterCall = function() {
 	})
 }
 
-
+this.twitterURL = null;
 this.callSuccess = function(response){
 	// console.log('Success: ',response);
 	console.log(response);
+	this.twitterURL = 'https://twitter.com/' + response.info.screen_name;
 	var playerList = null
 
 	var $titleDiv = $('<div>', {
@@ -108,7 +109,8 @@ this.callSuccess = function(response){
     var $twitterLogo = $('<i>',{
         class: 'fa fa-twitter',
         css: {
-        	'font-size': '1.6em'
+        	'font-size': '1.6em',
+        	'color': 'white'
         }
     });
     var $youtubeLogo = $('<i>',{
@@ -123,15 +125,16 @@ this.callSuccess = function(response){
 			href: teamYoutube.youtubeURL,
 			target: '_blank'
 		});
-    $titleDiv.append($twitterLogo, $name, $aTag);
+    var $twitterAtag = $('<a>',{
+    		href: this.twitterURL,
+    		target: '_blank'
+    });
+    $titleDiv.append($twitterAtag, $name, $aTag);
 	$('.playerTweets').append($titleDiv, $tweet);
 	$tweet.append(response.info.status.text);
 	// $('.playerTweets').append($tweet);
 	$aTag.append($youtubeLogo);
-	
-
-
-
+	$twitterAtag.append($twitterLogo); 
 
 
 };
