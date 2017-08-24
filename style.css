@@ -112,6 +112,10 @@ body{
     left: 0%;
 }
 
+.titleContainer {
+    display: flex;
+}
+
 .tweetName{
     color: #00BFFF;
     font-weight: bold;
@@ -137,14 +141,10 @@ body{
     border-radius: 15pt;
 }
 
-.modalNews{
+.modalNews {
     position: fixed;
     top: 20%;
     left: 19.3%;
-}
-
-#readMore{
-    border-radius: 30pt;
 }
 
 .active {
@@ -154,4 +154,12 @@ body{
 .dropdown-menu > li:hover {
     background-color: gray;
     opacity: .8;
+}
+
+.player-dropdown > ul li {
+    list-style: none;
+}
+
+.added_player {
+    font-size: 3.5vh;
 }
