@@ -13,6 +13,7 @@ this.twitterRetweet = function (){
 	this.tweetRecount = null;
 	this.tweet = null;
 	this.teamName = '';
+	this.twitterHandle = null;
 	for(var i = 0; i < response.tweets.statuses.length; i++){
 		if(this.tweetRecount < response.info.statuses[i].retweet_count){
 			this.tweet = response.info.statuses[i].text;
@@ -65,25 +66,28 @@ this.twitterFeed = function (team){
 	teamYoutube.youtubeAPI();
 	for(var i in this.teamArray){
 		if(team === i){
-			twitterHandle = this.teamArray[i]
+			this.twitterHandle = this.teamArray[i]
 		}
 	}
+};
+
+this.twitterCall = function() {
 	console.log('ajaxCall function');
 	$.ajax({
-	dataType: 'json',
-	method: 'post',
-	url: 'http://s-apis.learningfuze.com/hackathon/twitter/index.php',
-	data: {
-		// search_term: hashtag
-		// user_id:
-		action: 'user',
-		screen_name: twitterHandle
-		// include_entities: false
-	},
-	success: this.callSuccess,
-	error: this.callError
-})
-};
+		dataType: 'json',
+		method: 'post',
+		url: 'http://s-apis.learningfuze.com/hackathon/twitter/index.php',
+		data: {
+			// search_term: hashtag
+			// user_id:
+			action: 'user',
+			screen_name: this.twitterHandle
+			// include_entities: false
+		},
+		success: this.callSuccess,
+		error: this.callError
+	})
+}
 
 
 this.callSuccess = function(response){
@@ -91,19 +95,43 @@ this.callSuccess = function(response){
 	console.log(response);
 	var playerList = null
 
-	var $name = $('<span>',{
+	var $titleDiv = $('<div>', {
+		class: 'titleContainer'
+	});
+	var $name = $('<div>',{
 		text: response.info.name,
 		class: 'tweetName'
 	});
 	var $tweet = $('<div>',{
 		class: 'twitterPost'
 	});
-    var $i = $('<i>',{
-        class: 'fa fa-twitter'
+    var $twitterLogo = $('<i>',{
+        class: 'fa fa-twitter',
+        css: {
+        	'font-size': '1.6em'
+        }
     });
-	$('.playerTweets').append($i).append($name).append($tweet);
+    var $youtubeLogo = $('<i>',{
+    	class: 'fa fa-youtube fa-lg',
+    	css: {
+    		'float': 'right',
+    		'color': 'red',
+    		'font-size': '1.6em'
+    	}
+    });
+    var $aTag = $('<a>',{
+			href: teamYoutube.youtubeURL,
+			target: '_blank'
+		});
+    $titleDiv.append($twitterLogo, $name, $aTag);
+	$('.playerTweets').append($titleDiv, $tweet);
 	$tweet.append(response.info.status.text);
-	$('.playerTweets').append($tweet);
+	// $('.playerTweets').append($tweet);
+	$aTag.append($youtubeLogo);
+	
+
+
+
 
 
 };

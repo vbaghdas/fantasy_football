@@ -8,6 +8,8 @@ function TeamYoutube(){
 	this.getName = function(name){
 		teamName = name;
 	}
+
+	this.youtubeURL = null;
 	this.youtubeAPI = function (){
 		console.log('youtubeAPI');
 		$.ajax({
@@ -19,7 +21,7 @@ function TeamYoutube(){
 				maxResults: 10// (number) number of results to return in one search
 				//type: 'video'//(string) video or channel. default is video
 			},
-			success: this.apiSuccess,
+			success: this.apiSuccess.bind(this),
 			error: this.apiError
 		});
 	};
@@ -28,7 +30,8 @@ function TeamYoutube(){
 		console.log('success: ', response.video[0]);
 		this.videoID = response.video[0].id;
 		this.videoTitle = response.video[0].title;
-		// this.
+		this.youtubeURL = 'https://www.youtube.com/watch?v='+this.videoID;
+		playertwitter.twitterCall();
 	}
 	this.apiError = function (response){
 		console.log('Error: ', response);
