@@ -144,10 +144,11 @@ body{
     border-radius: 15pt;
 }
 
-.modalNews{
+.modalNews {
     position: fixed;
     top: 20%;
     left: 19.3%;
+}
 
 .active {
     background-color: darkblue;
@@ -156,4 +157,13 @@ body{
 .dropdown-menu > li:hover {
     background-color: gray;
     opacity: .8;
+}
+
+.player-dropdown > ul li {
+    list-style: none;
+}
+
+.added_player {
+    font-size: 3.5vh;
+    font-family: helvetica;
 }
