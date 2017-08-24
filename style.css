@@ -75,18 +75,50 @@ body{
 }
 
 
-/*Player List*/
+/*Select Team and Player*/
 
-#player-list{
+#team-list{
     width: 100%;
 }
 
+#player-list{
+    width: 100%;
+    margin-top: .5vh;
+}
+
 .dropdown-menu{
-    width: 30vw;
+    width: 100%;
     height: 60vh;
     overflow: auto;
     background: black;
     color: white;
+}
+
+.active {
+    background-color: #477eb3;
+}
+
+.dropdown-menu > li:hover {
+    background-color: gray;
+    opacity: .8;
+}
+
+.player-dropdown > ul li {
+    list-style: none;
+}
+
+.added_player {
+    font-size: 1.5rem;
+}
+
+.added_player:nth-child(odd) {
+    font-size: 1.5rem;
+    background-color: #222;
+}
+
+.teamLogos{
+    margin-top: 2.5vh;
+    border-radius: 5pt;
 }
 
 
@@ -114,7 +146,7 @@ body{
 
 .titleContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .tweetName{
@@ -137,7 +169,7 @@ body{
 .img-rounded{
     display: block;
     margin: auto;
-    margin-top: 3vh;
+    margin-top: 2vh;
     width: 40%;
     border-radius: 15pt;
 }
@@ -146,21 +178,4 @@ body{
     position: fixed;
     top: 20%;
     left: 19.3%;
-}
-
-.active {
-    background-color: darkblue;
-}
-
-.dropdown-menu > li:hover {
-    background-color: gray;
-    opacity: .8;
-}
-
-.player-dropdown > ul li {
-    list-style: none;
-}
-
-.added_player {
-    font-size: 3.5vh;
 }

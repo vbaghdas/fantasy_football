@@ -1,7 +1,3 @@
-
-var timePerTickerTraversal = 36000;
-
-
 $(document).ready(function() {
 
     sportsTicker = new SportsTicker;
@@ -10,7 +6,6 @@ $(document).ready(function() {
 });
 
 function SportsTicker () {
-
     this.ajaxCall = function () {
         $.ajax({
             url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/daily_game_schedule.json?fordate=20171203',
@@ -27,8 +22,8 @@ function SportsTicker () {
     this.success = function (response) {
         var teamScheduleArr = [];
         for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
-            var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Name;
-            var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Name;
+            var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Abbreviation;
+            var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Abbreviation;
             var time = response.dailygameschedule.gameentry[i].time;
             teamScheduleArr.push(awayTeam + ' vs ' + homeTeam + ' @ ' + time);
         }
@@ -53,16 +48,12 @@ function SportsTicker () {
                 });
             }
         }
-
         initializeCrawler(teamScheduleArr);
-
-
     };
     this.error = function (response) {
         console.log('error', response);
         }
 }
-
 
 var sportsTicker = null;
 
