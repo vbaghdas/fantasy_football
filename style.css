@@ -114,6 +114,7 @@ body{
 
 .titleContainer {
     display: flex;
+    justify-content: space-around;
 }
 
 .tweetName{
