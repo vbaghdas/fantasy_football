@@ -31,7 +31,6 @@ function Player_list() {
     };
 
     this.create_player_list = () => {
-        debugger;
         var filter_player = this.players.filter((player) => {return player.team === this.active_team});
         var $player_list = $('<ul>',{
             class: 'dropdown-menu'
