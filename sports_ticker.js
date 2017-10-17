@@ -1,11 +1,10 @@
 $(document).ready(function() {
-
     sportsTicker = new SportsTicker;
     sportsTicker.ajaxCall()
-
 });
 
 function SportsTicker () {
+    //AJAX call returns daily game schedule as a Javascript object
     this.ajaxCall = function () {
         $.ajax({
             url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/daily_game_schedule.json?fordate=20171203',
@@ -19,6 +18,7 @@ function SportsTicker () {
             }
         });
     };
+    //Success function from ajax call takes response as the parameter, filters game schedule and pushes to the array
     this.success = function (response) {
         var teamScheduleArr = [];
         for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
@@ -27,21 +27,24 @@ function SportsTicker () {
             var time = response.dailygameschedule.gameentry[i].time;
             teamScheduleArr.push(awayTeam + ' vs ' + homeTeam + ' @ ' + time);
         }
+        //Renders and animates the array of the game schedule on the DOM using jQuery with a set interval
         function initializeCrawler(){
             var teamScheduleArrItems = teamScheduleArr.slice();
-            var crawlTime = 2000;
+            var crawlTime = 3000;
             var newCrawlerTime = 6000;
             setInterval(addItemToCrawler, crawlTime);
             function addItemToCrawler(){
                 if(teamScheduleArrItems.length < 1){
                     return;
                 }
-                var nextItem = teamScheduleArrItems.shift(); //add
+                //Removes first element from the array and creates a new item to render on the DOM
+                var nextItem = teamScheduleArrItems.shift();
                 var $div = $('<div>', {
                     text: nextItem,
                     class: 'tickerItem'
                 });
                 $('.sportsTicker').append($div);
+                //Animates the scrolling text to the left of the viewport and removes them
                 $div.animate({left: "-20%"}, newCrawlerTime, 'linear', function(){
                     teamScheduleArrItems.push($(this).text());
                     $(this).remove();
@@ -50,71 +53,10 @@ function SportsTicker () {
         }
         initializeCrawler(teamScheduleArr);
     };
+
     this.error = function (response) {
         console.log('Error: ',response)
-        }
+    }
 }
 
 var sportsTicker = null;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// this.success = function (response) {
-//     var $tickerItem = $('<marquee>',{
-//         class: 'tickerItem',
-//         scrollamount: '15'
-//     });
-//     for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
-//         var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Name;
-//         var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Name;
-//         var $span = $('<span>',{
-//             text: awayTeam + ' vs ' + homeTeam
-//         });
-//         $($tickerItem).append($span);
-//     }
-//     $('.sportsTicker').append($tickerItem);
-// };
-
-
-
-// function SportsTicker () {
-// var tickerItems = [];
-// var currentTicker = 0;
-//
-// function transitionItem(){
-//     tickerItems[currentTicker].animate({
-//         left: '-25%'
-//     }, timePerTickerTraversal,'linear',function(){
-//         $(this).css('left','100%')
-//     });
-//
-// }
-// function startTransition(){
-//     setInterval(function(){
-//         console.log('starting '+currentTicker)
-//         transitionItem();
-//         currentTicker++;
-//         if(currentTicker===tickerItems.length){
-//             $('.tickerItem').css('left','100%');
-//             currentTicker = 0;
-//         }
-//
-//     },timePerTickerTraversal/tickerItems.length);
-//
-// }
-
-

@@ -1,143 +1,163 @@
 body{
-    background: url(background.jpg) no-repeat fixed center;
+    background: #222;
     font-family: 'Roboto', sans-serif;
 }
 
+/* Preloader for API response time */
+.js div#preloader { 
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    z-index: 999; 
+    width: 100%; 
+    height: 100%; 
+    overflow: visible; 
+    background: #333 url('preloader.gif') no-repeat center center; 
+}
 
 /*Sports Ticker Row*/
-
 .sportsTicker{
     height: 8vh;
     overflow: hidden;
     position: relative;
-    background-color: black;
-    border-radius: 30pt;
+    background-color: rgb(20, 20, 20);
+    border: solid black;
     box-sizing:border-box;
-    box-shadow: 1rem 1rem 1rem #222;
     padding: 2rem;
     opacity: 0.9;
-    color: white;
+    color: #222;
 }
 .sportsTicker .tickerItem {
-    font-size: 3vh;
-    color: limegreen;
+    font-size: 24px;
+    color: #39A279;
     position: absolute;
     left: 100%;
     white-space: nowrap;
 }
 
-
-/*Headlines Row*/
-
+/*Main App Row and All Panels*/
 .headlines{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }
 
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .panel-primary{
-    background-color: black;
-    height: 80vh;
-    border-radius: 30pt;
+    background-color: rgb(20, 20, 20);
+    height: 85vh;
     border: solid black;
     box-sizing:border-box;
-    box-shadow: 1rem 1rem 1rem #222;
     padding: 2rem;
     opacity: 0.9;
     color: white;
     overflow: scroll;
     margin-top: 3.5vh;
-
-}
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: .9; } }
-
-.panel-primary {
     opacity: 0;
     animation: fadeIn ease-in 1;
     animation-fill-mode: forwards;
     animation-duration: 1s;
 }
-
 .panel-primary.one {
     animation-delay: 0.4s;
-    width: 23%;
+    width: 30%;
+    background: url(bgimage.jpg);
 }
-
+.panel-primary.one > .panel-heading {
+    border-left: solid #EA3814 5px!important;
+}
 .panel-primary.two {
     animation-delay: 0.8s;
-    width: 23%;
+    width: 28%;
 }
-
+.panel-primary.two > .panel-heading {
+    border-left: solid #00BFFF 5px!important;
+}
 .panel-primary.three {
     animation-delay: 1.2s;
-    width: 48%;
+    width: 40%;
 }
-
+.panel-primary.three > .panel-heading {
+    border-left: solid #39A279 5px!important;
+}
 .panel-heading{
-    border-radius: 30pt;
     text-align: center;
+    background-color: #222!important;
+    border: solid black 2px!important;
+}
+.panel-body {
+    padding: 0;
 }
 
-
-/*Select Team and Player*/
-
-#team-list{
+/*Player and Team List (Panel One)*/
+.playerList #team-list { 
     width: 100%;
 }
-
-#player-list{
+.playerList #player-list {
     width: 100%;
-    margin-top: .5vh;
+    margin-top: .5vh
 }
-
-.dropdown-menu{
+.playerList .dropdown-menu {
     width: 100%;
     height: 60vh;
     overflow: auto;
-    background: black;
-    color: white;
+    background: rgba(20, 20, 20, 0.9)!important;
+    color: #FFF;
 }
-
-.active {
-    background-color: #477eb3;
-}
-
-.dropdown-menu > li:hover {
-    background-color: gray;
+.playerList > #team-dropdown > .dropdown-menu > li:hover {
+    background-color: #39A279;
+    color: #FFF;
     opacity: .8;
 }
-
-.player-dropdown > ul li {
-    list-style: none;
+.playerList > #player-dropdown > .dropdown-menu > li:hover {
+    background-color: #EA3814;
+    color: #FFF;
+    opacity: .8;
 }
-
-.added_player {
+.playerList > .added_player {
+    background-color: rgba(20, 20, 20, 0.9);
+    padding: 5px;
     font-size: 1.5rem;
 }
-
-.added_player:nth-child(odd) {
-    font-size: 1.5rem;
-    background-color: #222;
+.btn-team {
+    background: rgba(20, 20, 20, 0.9)!important;
+    border: solid #39A279 2px!important;
+    font-size: 16px;
+    margin-top: 2vh;
+}
+.btn-team:hover {
+    background: #39A279!important;
+}
+.btn-player {
+    background: rgba(20, 20, 20, 0.9)!important;
+    border: solid #EA3814 2px!important;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+.btn-player:hover {
+    background: #EA3814!important;
+}
+.btn:hover, .btn:focus {
+    color: #FFF;
+}
+.caret {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #FFF;
+    margin-top: 8px;
+    float: right;
 }
 
-.teamLogos{
-    margin-top: 2.5vh;
-    border-radius: 5pt;
-}
-
-
-/*Twitter*/
-
+/*Twitter Feed (Panel Two)*/
 .twitterPost{
     margin: 0;
     position: relative;
     padding: 1.5rem;
     margin-bottom: 2%;
-    background-color: silver;
-    color: black;
-    border-radius: 15pt;
+    background-color: #222;
+    color: #FFF;
     font-weight: bold;
+    font-size: 13px;
 }
 .twitterPost::before{
     content: '';
@@ -147,60 +167,74 @@ body{
     top: 0;
     left: 0;
 }
-
 .titleContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    padding-top: 15px;
 }
-
 .tweetName{
     color: #00BFFF;
     font-weight: bold;
-    padding-top: 2%;
+    font-size: 13px;
 }
-.tweetName::after{
-    #content: ': ';
+.tweetName:after{
+    content: ': ';
     color: inherit;
 }
-
-
-/*News*/
-
-.playerNews h3{
-    color: goldenrod;
+.img-rounded {
+    border-radius: 30px;
+    padding-right: 5px;
+    float: left;
+}
+.fa-youtube {
+    color: #EA3814!important;
 }
 
-.img-rounded{
+/*News Feed (Panel Three)*/
+.avatarNews{
     display: block;
     margin: auto;
     margin-top: 2vh;
-    width: 40%;
-    border-radius: 15pt;
 }
-
+.newsHeader h3{
+    color: goldenrod;
+    font-size: 18px;
+}
+.description {
+    margin-bottom: 30px;
+    font-size: 13px;
+}
+.btn-warning {
+    float: right;
+    color: goldenrod!important;
+    background: none!important;
+    border-color: goldenrod;
+}
+.btn-warning:hover {
+    border-color: goldenrod!important;
+    background-color: goldenrod!important;
+    color: #000!important;
+}
 .modalNews {
     position: fixed;
     top: 20%;
     left: 19.3%;
 }
 
-/*Media queries to collapse headlines row*/
-
+/*Media Queries for Panel Responsiveness*/
 @media screen and (max-width: 991px){
     .headlines {
         justify-content: center;
     }
-
     .panel-primary.one {
         animation-delay: 0.4s;
         width: 45%;
+        margin-right: 5px;
     }
-
     .panel-primary.two {
         animation-delay: 0.8s;
         width: 45%;
     }
-
     .panel-primary.three {
         animation-delay: 1.2s;
         width: 95%;
@@ -208,20 +242,20 @@ body{
 }
 
 @media screen and (max-width: 768px){
+    .sportsTicker .tickerItem {
+        font-size: 3.75vw;
+    }
     .headlines {
         justify-content: center;
     }
-
     .panel-primary.one {
         animation-delay: 0.4s;
         width: 95%;
     }
-
     .panel-primary.two {
         animation-delay: 0.8s;
         width: 95%;
     }
-
     .panel-primary.three {
         animation-delay: 1.2s;
         width: 95%;

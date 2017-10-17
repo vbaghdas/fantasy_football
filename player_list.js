@@ -3,12 +3,12 @@ $(document).ready(function(){
 });
 
 function Player_list() {
-    var football_nerd_api = '5fau8mwe74me';
     this.team_array = Object.keys(playertwitter.teamArray)
     this.players = [];
     this.active_team = '';
     this.filter_player = [];
     this.display_list = [];
+    //AJAX call returns NFL Player Roster as a Javascript object
     $.ajax({
         method: 'GET',
         url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/roster_players.json?fordate=20171029',
@@ -26,12 +26,16 @@ function Player_list() {
                 });
                 this.players[i].hash_list = '#' + this.players[i].team + ' ' + '#' +this.players[i].first_name + this.players[i].last_name + ' ' + '#' + 'nfl'
             }
+        },
+        complete: function(){
+            $('#preloader').fadeOut('slow',function(){$(this).remove();});
         }
     });
+    //Initializes and calls the create team list function on page load
     this.init = function(){
         this.create_team_list();
     };
-
+    //Creates the player list on the DOM as a dropdown menu
     this.create_player_list = () => {
         this.filter_player = this.players.filter((player) => {return player.team === this.active_team});
 
@@ -50,7 +54,7 @@ function Player_list() {
         }
         $('#player-dropdown').append($player_list);
     };
-
+    //Creates the team list on the DOM as a dropdown menu
     this.create_team_list = function() {
         var $team_list = $('<ul>', {
             class: 'dropdown-menu'
@@ -64,7 +68,7 @@ function Player_list() {
         }
         $('#team-dropdown').append($team_list);
     };
-
+    //
     this.selected_player = (function(player_list){return function(element, player_obj) {
         element.player_info = player_obj;
         $(element).click(function(){
@@ -80,7 +84,7 @@ function Player_list() {
             var num = 0;
         });
     }})(this);
-
+    //
     this.check_player_list = (player_i) => {
         for(var i = 0; i < this.filter_player.length; i++) {
             if(!$(`.added_player:eq(${i})`)['0']) {
@@ -91,9 +95,11 @@ function Player_list() {
             }
         } return false
     }
+
     this.remove_players = function(id) {
         $(`[id=${id}]`).remove()
     }
+    //
     this.selected_team = (function(player_list) { return function(element, i) {
         element.team_info = this.team_array[i];
         $(element).on('click', function(){
@@ -105,32 +111,6 @@ function Player_list() {
         })
     }})(this);
     this.init();
-
 }
 
 var player_list = null;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $.ajax({
-//     method: 'GET',
-//     url: 'http://localhost:8888/server/football.php?service-name=nfl-teams&format=json&api-key=35fdy7tax7wb',
-//     dataType: 'json',
-//     success: function(response) {
-//         console.log(response)
-//     }
-// })

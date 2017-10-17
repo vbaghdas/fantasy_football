@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="js" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fantasy Football</title>
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="sports_ticker.js"></script>
@@ -17,38 +17,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div id="preloader"></div>
 <div class="container">
     <div class="row ticker">
         <div class="sportsTicker"></div>
     </div>
     <div class="row headlines">
         <div class="panel panel-primary one">
-
-            <div class="panel-heading"><i class="fa fa-user fa-3x" aria-hidden="true"></i></div>
+            <div class="panel-heading"><i class="fa fa-users fa-3x" aria-hidden="true"></i></div>
             <div class="panel-body playerList">
-                <img class="img-responsive teamLogos" src="teams.jpg">
                 <div id='team-dropdown' class="dropdown">
-                    <button id='team-list' class="btn btn-success dropdown-toggle" type="button" data-toggle='dropdown'>Select Teams</button>
+                    <button id='team-list' class="btn btn-team dropdown-toggle" type="button" data-toggle='dropdown'>Select Teams<span class="caret"></span></button>
                 </div>
                 <div id="player-dropdown" class='dropdown'>
-                    <button id='player-list' class="btn btn-danger dropdown-toggle" type="button" data-toggle='dropdown'>Select Players</button>
+                    <button id='player-list' class="btn btn-player dropdown-toggle" type="button" data-toggle='dropdown'>Select Players<span class="caret"></span></button>
                 </div>
             </div>
         </div>
         <div class="panel panel-primary two">
-
             <div class="panel-heading"><i class="fa fa-twitter fa-3x"></i></div>
             <div class="panel-body playerTweets"></div>
         </div>
         <div class="panel panel-primary three">
             <div class="panel-heading"><i class="fa fa-newspaper-o fa-3x" aria-hidden="true"></i></div>
-            <div class="panel-body playerNews"></div>
+            <div class="panel-body newsHeader"></div>
         </div>
     </div>
 </div>
 
-<!--Modal for news on read more-->
+<!--Modal displays NFL news from API via a click on the read more button-->
 
 <div id="readMore" class="modal fade" role="dialog">
     <div class="modal-body modalNews"></div>

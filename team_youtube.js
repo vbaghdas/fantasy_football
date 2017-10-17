@@ -1,17 +1,16 @@
 $(document).ready(function(){
-teamYoutube = new TeamYoutube;
+	teamYoutube = new TeamYoutube;
 })
 
 function TeamYoutube(){
-	console.log('TeamYoutube function called');
+
 	var teamName = ''
 	this.getName = function(name){
 		teamName = name;
 	}
-
+	//AJAX call loads Javascript object from YouTube via data query search
 	this.youtubeURL = null;
 	this.youtubeAPI = function (){
-		console.log('youtubeAPI');
 		$.ajax({
 			dataType: 'json',
 			method: 'post',
@@ -22,22 +21,20 @@ function TeamYoutube(){
 				//type: 'video'//(string) video or channel. default is video
 			},
 			success: this.apiSuccess.bind(this),
-			error: this.apiError
+			error: this.apiError,
 		});
 	};
-
+	//Access JSON response from AJAX call and create a button on each twitter feed
 	this.apiSuccess = function (response){
-		console.log('success: ', response.video[0]);
 		this.videoID = response.video[0].id;
 		this.videoTitle = response.video[0].title;
 		this.youtubeURL = 'https://www.youtube.com/watch?v='+this.videoID;
 		playertwitter.twitterCall();
 	}
+
 	this.apiError = function (response){
 		console.log('Error: ', response);
-	}
-	
+	}	
 }
-
 
 var teamYoutube = null;
