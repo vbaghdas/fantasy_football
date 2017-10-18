@@ -3,7 +3,7 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-/* Preloader for API response time */
+/* Preloader loads before API response */
 .js div#preloader { 
     position: fixed; 
     left: 0; 
@@ -12,10 +12,10 @@ body{
     width: 100%; 
     height: 100%; 
     overflow: visible; 
-    background: #333 url('preloader.gif') no-repeat center center; 
+    background: #333 url('../assets/images/preloader.gif') no-repeat center center; 
 }
 
-/*Sports Ticker Row*/
+/*Sports Ticker*/
 .sportsTicker{
     height: 8vh;
     overflow: hidden;
@@ -35,7 +35,7 @@ body{
     white-space: nowrap;
 }
 
-/*Main App Row and All Panels*/
+/*Main App*/
 .headlines{
     display: flex;
     flex-flow: row wrap;
@@ -61,7 +61,7 @@ body{
 .panel-primary.one {
     animation-delay: 0.4s;
     width: 30%;
-    background: url(bgimage.jpg);
+    background: url(../assets/images/bgimage.jpg);
 }
 .panel-primary.one > .panel-heading {
     border-left: solid #EA3814 5px!important;
@@ -89,7 +89,7 @@ body{
     padding: 0;
 }
 
-/*Player and Team List (Panel One)*/
+/*Panel One - Player List*/
 .playerList #team-list { 
     width: 100%;
 }
@@ -119,28 +119,28 @@ body{
     padding: 5px;
     font-size: 1.5rem;
 }
-.btn-team {
+.playerList .btn-team {
     background: rgba(20, 20, 20, 0.9)!important;
     border: solid #39A279 2px!important;
     font-size: 16px;
     margin-top: 2vh;
 }
-.btn-team:hover {
+.playerList .btn-team:hover {
     background: #39A279!important;
 }
-.btn-player {
+.playerList .btn-player {
     background: rgba(20, 20, 20, 0.9)!important;
     border: solid #EA3814 2px!important;
     margin-bottom: 5px;
     font-size: 16px;
 }
-.btn-player:hover {
+.playerList .btn-player:hover {
     background: #EA3814!important;
 }
-.btn:hover, .btn:focus {
+.playerList .btn:hover, .btn:focus {
     color: #FFF;
 }
-.caret {
+.playerList .caret {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid #FFF;
@@ -148,8 +148,8 @@ body{
     float: right;
 }
 
-/*Twitter Feed (Panel Two)*/
-.twitterPost{
+/*Panel Two - Twitter Feed*/
+.playerTweets .twitterPost{
     margin: 0;
     position: relative;
     padding: 1.5rem;
@@ -159,7 +159,7 @@ body{
     font-weight: bold;
     font-size: 13px;
 }
-.twitterPost::before{
+.playerTweets .twitterPost::before{
     content: '';
     height: 3px;
     width: 100%;
@@ -167,31 +167,31 @@ body{
     top: 0;
     left: 0;
 }
-.titleContainer {
+.playerTweets .titleContainer {
     display: flex;
     justify-content: flex-start;
     padding-top: 15px;
 }
-.tweetName{
+.playerTweets .tweetName{
     color: #00BFFF;
     font-weight: bold;
     font-size: 13px;
 }
-.tweetName:after{
+.playerTweets .tweetName:after{
     content: ': ';
     color: inherit;
 }
-.img-rounded {
+.playerTweets .img-rounded {
     border-radius: 30px;
     padding-right: 5px;
     float: left;
 }
-.fa-youtube {
+.playerTweets .fa-youtube {
     color: #EA3814!important;
 }
 
-/*News Feed (Panel Three)*/
-.avatarNews{
+/*Panel Three - News Feed*/
+.newsHeader .avatarNews{
     display: block;
     margin: auto;
     margin-top: 2vh;
@@ -200,17 +200,17 @@ body{
     color: goldenrod;
     font-size: 18px;
 }
-.description {
+.newsHeader .description {
     margin-bottom: 30px;
     font-size: 13px;
 }
-.btn-warning {
+.newsHeader .btn-warning {
     float: right;
     color: goldenrod!important;
     background: none!important;
     border-color: goldenrod;
 }
-.btn-warning:hover {
+.newsHeader .btn-warning:hover {
     border-color: goldenrod!important;
     background-color: goldenrod!important;
     color: #000!important;

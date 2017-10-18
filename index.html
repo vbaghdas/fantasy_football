@@ -2,51 +2,81 @@
 <html class="js" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fantasy Football</title>
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Fantasy Football</title>
+
+    <!-- Bootstrap JS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="bootstrap/jquery.min.js"></script>
+
+    <!-- Boostrap CSS -->
+    <script src="bootstrap/bootstrap.min.js"></script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="sports_ticker.js"></script>
-    <script src="team_youtube.js"></script>
-    <script src="player_twitter.js"></script>
-    <script src="player_list.js"></script>
-    <script src="player_news.js"></script>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Font-Awesome Icons -->
+    <script src="font-awesome/font-awesome.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/sports_ticker.js"></script>
+    <script src="js/team_youtube.js"></script>
+    <script src="js/player_twitter.js"></script>
+    <script src="js/player_list.js"></script>
+    <script src="js/player_news.js"></script>
+
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- Preloader for API -->
 <div id="preloader"></div>
+
+<!-- Start App Container -->
 <div class="container">
+    <!-- Sports Ticker -->
     <div class="row ticker">
         <div class="sportsTicker"></div>
     </div>
+    <!-- Headlines -->
     <div class="row headlines">
+
+        <!-- Panel One -->
         <div class="panel panel-primary one">
-            <div class="panel-heading"><i class="fa fa-users fa-3x" aria-hidden="true"></i></div>
+            <div class="panel-heading"><i class="fa fa-users fa-3x"></i></div>
             <div class="panel-body playerList">
+                <!-- Team List -->
                 <div id='team-dropdown' class="dropdown">
                     <button id='team-list' class="btn btn-team dropdown-toggle" type="button" data-toggle='dropdown'>Select Teams<span class="caret"></span></button>
                 </div>
+                <!-- Player List -->
                 <div id="player-dropdown" class='dropdown'>
                     <button id='player-list' class="btn btn-player dropdown-toggle" type="button" data-toggle='dropdown'>Select Players<span class="caret"></span></button>
                 </div>
             </div>
         </div>
+
+        <!-- Panel Two -->
         <div class="panel panel-primary two">
+            <!-- Twitter Feed -->
             <div class="panel-heading"><i class="fa fa-twitter fa-3x"></i></div>
             <div class="panel-body playerTweets"></div>
         </div>
+
+        <!-- Panel Three -->
         <div class="panel panel-primary three">
-            <div class="panel-heading"><i class="fa fa-newspaper-o fa-3x" aria-hidden="true"></i></div>
+            <!-- News Feed -->
+            <div class="panel-heading"><i class="fa fa-newspaper-o fa-3x"></i></div>
             <div class="panel-body newsHeader"></div>
         </div>
     </div>
 </div>
+<!-- End of App Container -->
 
-<!--Modal displays NFL news from API via a click on the read more button-->
-
+<!--Modal -->
 <div id="readMore" class="modal fade" role="dialog">
     <div class="modal-body modalNews"></div>
 </div>

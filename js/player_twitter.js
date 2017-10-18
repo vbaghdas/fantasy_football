@@ -82,7 +82,6 @@ function PlayerTwitter(){
 	//Access JSON response on success from AJAX call and create the DOM with jQuery
 	this.twitterURL = null;
 	this.success = function(response){
-		console.log('ajaxCall function', response);
 		this.twitterURL = 'https://twitter.com/' + response.info.screen_name;
 		var playerList = null
 
