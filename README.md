@@ -20,29 +20,9 @@ Hackathon project involving the combination of different data sources into an ap
 
 
 ### Teams
-- Team 1
-  - Cody
-  - Grayson
-  - Soren
-
-- Team 2
-  - Matt
-  - Nico
-  - Shane 
-  - Caleb
-
-- Team 3
-  - Carlos
-  - Jen
-  - Soy 
-  - Hanlin 
-
-- Team 4
   - Austin
   - Chris
   - Vache
-  - Jonathan
 
 ### Deadline: 
 - 1:00PM Thursday, August 24, 2017
-
