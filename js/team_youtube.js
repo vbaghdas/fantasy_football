@@ -8,6 +8,7 @@ function TeamYoutube(){
 	this.getName = function(name){
 		teamName = name;
 	}
+
 	//AJAX call loads Javascript object from YouTube via data query search
 	this.youtubeURL = null;
 	this.youtubeAPI = function (){
@@ -24,6 +25,7 @@ function TeamYoutube(){
 			error: this.apiError,
 		});
 	};
+	
 	//Access JSON response from AJAX call and create a button on each twitter feed
 	this.apiSuccess = function (response){
 		this.videoID = response.video[0].id;

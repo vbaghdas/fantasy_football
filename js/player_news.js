@@ -4,6 +4,7 @@ $(document).ready(function() {
 });
 
 function PlayerNews () {
+    
     //AJAX call returns daily game schedule as a Javascript object
     this.ajaxCall = function () {
         $.ajax({
@@ -14,6 +15,7 @@ function PlayerNews () {
             error: this.error,
         });
     };
+
     //Access JSON response from AJAX call and create the DOM with jQuery
     this.success = function (response) {
         for (var i = 0; i < response.articles.length; i++) {
@@ -41,21 +43,20 @@ function PlayerNews () {
             $('.newsHeader').append($div);
             $($div).append($button);
         }
+        
         //Read more button executes Modal with an iframe of the specific Article clicked on
         $('.newsButton').on('click', function(){
-            $('.modalNews').empty();
+            $('.modal-body').empty();
             var $iframe = $('<iframe>', {
                 src: this.newsArticle,
-                width: '60vw',
-                height: '60vh'
             });
-            $('.modalNews').append($iframe);
+            $('.modal-body').append($iframe);
+            $('#newsModal').modal('show');
         });
-        $('.btn-warning').attr('data-toggle', 'modal');
-        $('.btn-warning').attr('data-target', '#readMore');
+
         //Removes iframe from modal on hide
-        $("#readMore").on('hidden.bs.modal', function (e) {
-            $("#readMore iframe").attr("src", '');
+        $("#newsModal").on('hidden.bs.modal', function (e) {
+            $("#newsModal iframe").attr("src", '');
         });
         this.error = function (response) {
             console.log('error', response);

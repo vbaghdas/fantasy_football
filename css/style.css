@@ -203,11 +203,43 @@ body{
     background-color: goldenrod!important;
     color: #000!important;
 }
-.modalNews {
-    position: fixed;
-    top: 20%;
-    left: 19.3%;
+
+/* Modal */
+.modal-content {
+    background: #222;
+    color: goldenrod;
 }
+
+.modal-header button {
+    color: #FFF;
+}
+
+.modal-body {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+.modal-body iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-footer .btn-danger {
+    color: #EA3814!important;
+    background: none!important;
+    border-color: #EA3814;
+}
+.modal-footer .btn-danger:hover {
+    border-color: #EA3814!important;
+    background-color: #EA3814!important;
+    color: #000!important;
+}
+
 
 /*Media Queries for Panel Responsiveness*/
 @media screen and (max-width: 991px){

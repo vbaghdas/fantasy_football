@@ -52,6 +52,7 @@ function PlayerTwitter(){
 		Cowboys: 'dallascowboys',
 		Chargers: 'Chargers'
 		};
+
 	//Function handles Twitter feed and YouTube link
 	this.twitterFeed = function (team){
 		var twitterHandle = null;
@@ -79,6 +80,7 @@ function PlayerTwitter(){
 			error: this.error,
 		})
 	}
+	
 	//Access JSON response on success from AJAX call and create the DOM with jQuery
 	this.twitterURL = null;
 	this.success = function(response){
