@@ -37,8 +37,13 @@ function PlayerNews () {
                 class: 'btn btn-warning btn-xs newsButton',
                 text: 'Read More'
             });
+            
+            //Assigns read more button to appropriate article
             var buttonInfo = $button[0];
             buttonInfo.newsArticle = response.articles[i].url;
+            buttonInfo.newsTitle = response.articles[i].title;
+
+            //Append title, description, and button to news section
             $('.newsHeader').append($h3);
             $('.newsHeader').append($div);
             $($div).append($button);
@@ -50,6 +55,7 @@ function PlayerNews () {
             var $iframe = $('<iframe>', {
                 src: this.newsArticle,
             });
+            $('.modal-title').text(this.newsTitle);
             $('.modal-body').append($iframe);
             $('#newsModal').modal('show');
         });
