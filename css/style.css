@@ -115,6 +115,10 @@ body{
 }
 .playerList .btn-team:hover {
     background: #39A279!important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 .playerList .btn-player {
     background: rgba(20, 20, 20, 0.9)!important;
@@ -124,6 +128,10 @@ body{
 }
 .playerList .btn-player:hover {
     background: #EA3814!important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 .playerList .btn:hover, .btn:focus {
     color: #FFF;
@@ -202,12 +210,17 @@ body{
     border-color: goldenrod!important;
     background-color: goldenrod!important;
     color: #000!important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 /* Modal */
 .modal-content {
     background: #222;
     color: goldenrod;
+    padding: 10px;
 }
 
 .modal-header button {
@@ -238,6 +251,10 @@ body{
     border-color: #EA3814!important;
     background-color: #EA3814!important;
     color: #000!important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 
@@ -258,6 +275,7 @@ body{
     .panel-primary.three {
         animation-delay: 1.2s;
         width: 95%;
+        text-align: center;
     }
 }
 
