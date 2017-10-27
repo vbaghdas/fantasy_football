@@ -2,9 +2,6 @@ body {
     background: #222;
     font-family: 'Roboto', sans-serif;
 }
-body::-webkit-scrollbar { 
-    display: none; 
-}
 
 /*Sports Ticker*/
 .sportsTicker {
@@ -34,7 +31,7 @@ body::-webkit-scrollbar {
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.panel-primary{
+.panel-primary {
     background-color: rgb(20, 20, 20);
     height: 85vh;
     border: solid black;
@@ -48,6 +45,9 @@ body::-webkit-scrollbar {
     animation: fadeIn ease-in 1;
     animation-fill-mode: forwards;
     animation-duration: 1s;
+}
+.panel-primary::-webkit-scrollbar { 
+    display: none; 
 }
 .panel-primary.one {
     animation-delay: 0.4s;
