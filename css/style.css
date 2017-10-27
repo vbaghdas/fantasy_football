@@ -84,6 +84,7 @@ body {
 .playerList #selectTeam { 
     width: 100%;
     background: rgba(20, 20, 20, 0.9)!important;
+    color: #FFF!important;
     border: solid #39A279 2px!important;
     font-size: 16px;
     margin-top: 2vh;
@@ -99,11 +100,11 @@ body {
   }
 .playerList #selectTeam:hover {
     background: #39A279!important;
-    color: #FFF;
 }
 .playerList #selectPlayer {
     width: 100%;
     background: rgba(20, 20, 20, 0.9)!important;
+    color: #FFF!important;
     border: solid #EA3814 2px!important;
     margin: 5px 0 5px 0;
     font-size: 16px;
@@ -119,7 +120,6 @@ body {
   }
 .playerList #selectPlayer:hover {
     background: #EA3814!important;
-    color: #FFF;
 }
 .playerList .dropdown-menu {
     width: 100%;

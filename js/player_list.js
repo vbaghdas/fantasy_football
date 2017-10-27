@@ -18,7 +18,6 @@ function PlayerList() {
             "Authorization": "Basic " + btoa("vbaghdas" + ":" + "consoles1")
         },
         success: (response) => {
-            console.log(response.dailydfs.dfsEntries[0].dfsRows);
             for(var i = 0; i < response.dailydfs.dfsEntries[0].dfsRows.length; i++) {
                 this.players.push({
                     firstName: response.dailydfs.dfsEntries[0].dfsRows[i].player.FirstName,
