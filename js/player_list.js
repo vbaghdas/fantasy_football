@@ -1,116 +1,158 @@
-$(document).ready(function(){
-    player_list = new Player_list;
+$(document).ready( () => {
+    playerList = new PlayerList;
 });
 
-function Player_list() {
-    this.team_array = Object.keys(playertwitter.teamArray)
+function PlayerList() {
+    this.teamArr = Object.keys(playertwitter.teamArray)
     this.players = [];
-    this.active_team = '';
-    this.filter_player = [];
-    this.display_list = [];
+    this.activeTeam = '';
+    this.filterPlayer = [];
+
     //AJAX call returns NFL Player Roster as a Javascript object
     $.ajax({
         method: 'GET',
-        url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/roster_players.json?fordate=20171029',
+        url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/daily_dfs.json',
         dataType: 'json',
-        async: false,
+        async: true,
         headers: {
             "Authorization": "Basic " + btoa("vbaghdas" + ":" + "consoles1")
         },
         success: (response) => {
-            for(var i = 0; i < response.rosterplayers.playerentry.length; i++) {
+            console.log(response.dailydfs.dfsEntries[0].dfsRows);
+            for(var i = 0; i < response.dailydfs.dfsEntries[0].dfsRows.length; i++) {
                 this.players.push({
-                    first_name: response.rosterplayers.playerentry[i].player.FirstName,
-                    last_name: response.rosterplayers.playerentry[i].player.LastName,
-                    team: (response.rosterplayers.playerentry[i].team) ? response.rosterplayers.playerentry[i].team.Name : 'no team',
+                    firstName: response.dailydfs.dfsEntries[0].dfsRows[i].player.FirstName,
+                    lastName: response.dailydfs.dfsEntries[0].dfsRows[i].player.LastName,
+                    team: (response.dailydfs.dfsEntries[0].dfsRows[i].team) ? response.dailydfs.dfsEntries[0].dfsRows[i].team.Name : 'No Team',
+                    position: response.dailydfs.dfsEntries[0].dfsRows[i].player.Position,
+                    date: response.dailydfs.dfsEntries[0].dfsRows[i].game.date,
+                    game: response.dailydfs.dfsEntries[0].dfsRows[i].game.homeTeam.Name +' vs '+ response.dailydfs.dfsEntries[0].dfsRows[i].game.awayTeam.Name,
+                    salary: response.dailydfs.dfsEntries[0].dfsRows[i].salary,
+                    fantasyPoints: response.dailydfs.dfsEntries[0].dfsRows[i].fantasyPoints,
                 });
-                this.players[i].hash_list = '#' + this.players[i].team + ' ' + '#' +this.players[i].first_name + this.players[i].last_name + ' ' + '#' + 'nfl'
+                this.players[i].hashList = '#' + this.players[i].team + ' ' + '#' +this.players[i].firstName + this.players[i].lastName + ' ' + '#' + 'nfl'
             }
         },
-        complete: function(){
-            $('#preloader').fadeOut('slow',function(){$(this).remove();});
-        }
     });
-    //Initializes and calls the create team list function on page load
-    this.init = function(){
-        this.create_team_list();
-    };
-    //Creates the player list on the DOM as a dropdown menu
-    this.create_player_list = () => {
-        this.filter_player = this.players.filter((player) => {return player.team === this.active_team});
 
-        var $player_list = $('<ul>',{
+    // Initialize and call the create team list function on page load
+    this.init = () => {
+        this.createTeamList();
+    };
+
+    // Create the player list on the DOM as a dropdown menu
+    this.createPlayerList = () => {
+        this.filterPlayer = this.players.filter((player) => {return player.team === this.activeTeam});
+        var $playerList = $('<ul>',{
             class: 'dropdown-menu'
         });
-        for (var i = 0; i < this.filter_player.length; i++) {
-            var $player_item = $('<li>',{
-                text: this.filter_player[i].first_name + ' ' + this.filter_player[i].last_name + ' , ' + this.filter_player[i].team,
+        for (var i = 0; i < this.filterPlayer.length; i++) {
+            var $playerItem = $('<li>',{
+                text: this.filterPlayer[i].firstName + ' ' + this.filterPlayer[i].lastName + ' , ' + this.filterPlayer[i].team,
                 id: i
             });
-            this.selected_player($player_item[0], this.filter_player[i]);
-            if(this.check_player_list(i) === false) {
-                $($player_list).append($player_item);
+            this.selectedPlayer($playerItem[0], this.filterPlayer[i]);
+            if(this.checkPlayerList(i) === false) {
+                $($playerList).append($playerItem);
             }
         }
-        $('#player-dropdown').append($player_list);
+        $('#playerDropdown').append($playerList);
     };
-    //Creates the team list on the DOM as a dropdown menu
-    this.create_team_list = function() {
-        var $team_list = $('<ul>', {
+
+    // Create the team list on the DOM as a dropdown menu
+    this.createTeamList = () => {
+        var $teamList = $('<ul>', {
             class: 'dropdown-menu'
         });
-        for (var i = 0; i < this.team_array.length; i++) {
-            var $team_item = $('<li>', {
-                text: this.team_array[i],
+        for (var i = 0; i < this.teamArr.length; i++) {
+            var $teamItem = $('<li>', {
+                text: this.teamArr[i],
             });
-            this.selected_team($team_item[0], i);
-            $($team_list).append($team_item);
+            this.selectedTeam($teamItem[0], i);
+            $($teamList).append($teamItem);
         }
-        $('#team-dropdown').append($team_list);
+        $('#teamDropdown').append($teamList);
     };
-    //
-    this.selected_player = (function(player_list){return function(element, player_obj) {
-        element.player_info = player_obj;
-        $(element).click(function(){
-            var $added_player = $('<div>',{
-                class: 'added_player',
-                text: this.textContent,
-            });
-            player_list.remove_players(this.id);
 
-            $added_player[0].player_info = player_obj;
-            $('.playerList').append($added_player);
-            playertwitter.twitterFeed(player_obj.team);
-            var num = 0;
+    // Select player and append Daily DFS to the DOM
+    this.selectedPlayer = ( (playerList) => {return (element, playerObj) => {
+        element.playerInfo = playerObj;
+        $(element).click( function(){
+            
+            // Added Player, Team, and Position
+            var $addedPlayer = $('<div>',{
+                class: 'addedPlayer',
+                text: this.textContent + ' - ' + this.playerInfo.position
+            });
+            playerList.removePlayers(this.id);
+
+            // Game and Date
+            var $game = $('<div>',{
+                class: 'game',
+                text: 'Game: ' + this.playerInfo.game + ' on ' + this.playerInfo.date
+            });
+
+            // Salary
+            var $salary = $('<div>',{
+                class: 'salary',
+                text: 'Salary: $' + this.playerInfo.salary
+            });
+
+            // Fantasy Points
+            var $fantasyPoints = $('<div>',{
+                class: 'fantasyPoints',
+                text: 'Fantasy Points: ' + this.playerInfo.fantasyPoints
+            });
+            
+            // Append players and stats to the lineup on the DOM
+            $addedPlayer[0].playerInfo = playerObj;
+            $('.playerList').append($addedPlayer);
+            $($addedPlayer).append($game, $salary, $fantasyPoints);
+
+            // Send team object to twitter feed
+            playertwitter.twitterFeed(playerObj.team);
+            
+            // Select team animation and hide select player button
+            $('#selectTeam').text('Select Team');
+            $('#selectTeam').css('animation', 'pulse 5s infinite');
+            $('#selectPlayer').css('visibility', 'hidden');
         });
     }})(this);
-    //
-    this.check_player_list = (player_i) => {
-        for(var i = 0; i < this.filter_player.length; i++) {
-            if(!$(`.added_player:eq(${i})`)['0']) {
+
+    // Check player and remove from drop down list if already added
+    this.checkPlayerList = (playerIndex) => {
+        for(var i = 0; i < this.filterPlayer.length; i++) {
+            if(!$(`.addedPlayer:eq(${i})`)['0']) {
                 return false
             }
-            if(this.filter_player[player_i] === $(`.added_player:eq(${i})`)["0"].player_info){
+            if(this.filterPlayer[playerIndex] === $(`.addedPlayer:eq(${i})`)["0"].playerInfo){
                 return true
             }
         } return false
     }
 
-    this.remove_players = function(id) {
+    this.removePlayers = (id) => {
         $(`[id=${id}]`).remove()
     }
-    //
-    this.selected_team = (function(player_list) { return function(element, i) {
-        element.team_info = this.team_array[i];
+
+    // When team is selected, create player list
+    this.selectedTeam = ( (playerList) => { return (element, i) => {
+        element.team_info = this.teamArr[i];
         $(element).on('click', function(){
-            $('#team-dropdown li').removeClass('active');
+            $('#teamDropdown li').removeClass('active');
             $(this).addClass('active');
-            $('#player-dropdown').find('ul').slice(0).remove();
-            player_list.active_team = this.team_info;
-            player_list.create_player_list();
+            $('#playerDropdown').find('ul').slice(0).remove();
+            playerList.activeTeam = this.team_info;
+            playerList.createPlayerList();
+
+            // Display team name in button, remove animation, and animate select player button
+            $('#selectTeam').text(playerList.activeTeam);
+            $('#selectTeam').css('animation', 'none');
+            $('#selectPlayer').css('visibility', 'initial');
+            $('#selectPlayer').css('animation', 'pulse2 5s infinite');
         })
     }})(this);
     this.init();
 }
 
-var player_list = null;
+var playerList = null;

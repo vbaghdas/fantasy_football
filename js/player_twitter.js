@@ -1,10 +1,10 @@
-$(document).ready(function(){
+$(document).ready( () => {
 	playertwitter = new PlayerTwitter;
 })
 
 function PlayerTwitter(){
 
-	this.twitterRetweet = function (){
+	this.twitterRetweet = () => {
 		this.tweetRecount = null;
 		this.tweet = null;
 		this.teamName = '';
@@ -54,7 +54,7 @@ function PlayerTwitter(){
 		};
 
 	//Function handles Twitter feed and YouTube link
-	this.twitterFeed = function (team){
+	this.twitterFeed = (team) => {
 		var twitterHandle = null;
 		this.teamName = team;
 		teamYoutube.getName(team);
@@ -67,7 +67,7 @@ function PlayerTwitter(){
 	};
 	
 	//Returns Javascript object of Twitter feed via and AJAX call
-	this.twitterCall = function() {
+	this.twitterCall = () => {
 		$.ajax({
 			dataType: 'json',
 			method: 'post',
@@ -83,7 +83,7 @@ function PlayerTwitter(){
 	
 	//Access JSON response on success from AJAX call and create the DOM with jQuery
 	this.twitterURL = null;
-	this.success = function(response){
+	this.success = (response) => {
 		this.twitterURL = 'https://twitter.com/' + response.info.screen_name;
 		var playerList = null
 
@@ -125,7 +125,7 @@ function PlayerTwitter(){
 				target: '_blank'
 		});
 		var i = 0;
-		(function() {
+		( () => {
 			while($(`.titleContainer:eq(${i})`)['0'] !== undefined ) {
 				if($(`.titleContainer:eq(${i}) .tweetName`).text() === response.info.name) {
 					return
@@ -138,7 +138,7 @@ function PlayerTwitter(){
 			$twitterAtag.append($twitterLogo);
 		})();
 	};
-	this.error = function(response){
+	this.error = (response) => {
 		console.log('Error: ',response)
 	}
 }

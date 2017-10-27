@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready( () => {
     playerNews = new PlayerNews;
     playerNews.ajaxCall()
 });
@@ -6,7 +6,7 @@ $(document).ready(function() {
 function PlayerNews () {
     
     //AJAX call returns daily game schedule as a Javascript object
-    this.ajaxCall = function () {
+    this.ajaxCall = () => {
         $.ajax({
             url: 'https://newsapi.org/v1/articles?source=nfl-news&sortBy=top&apiKey=3fde3b14410a4ffd9ec5807677972117',
             dataType: 'json',
@@ -17,7 +17,7 @@ function PlayerNews () {
     };
 
     //Access JSON response from AJAX call and create the DOM with jQuery
-    this.success = function (response) {
+    this.success = (response) => {
         for (var i = 0; i < response.articles.length; i++) {
             var img = $('<img>', {
                 src: response.articles[i].urlToImage,
@@ -61,10 +61,10 @@ function PlayerNews () {
         });
 
         //Removes iframe from modal on hide
-        $("#newsModal").on('hidden.bs.modal', function (e) {
+        $("#newsModal").on('hidden.bs.modal', (e) => {
             $("#newsModal iframe").attr("src", '');
         });
-        this.error = function (response) {
+        this.error = (response) => {
             console.log('error', response);
         }
     }

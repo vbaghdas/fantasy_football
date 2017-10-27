@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html class="js" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="css/loader.css">
     <title>Fantasy Football</title>
 
     <!-- Bootstrap 3.3.7 JS -->
@@ -22,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- App Scripts -->
-    <script src="js/sports_ticker.js"></script>
+    <!-- <script src="js/sports_ticker.js"></script> -->
     <script src="js/team_youtube.js"></script>
     <script src="js/player_twitter.js"></script>
     <script src="js/player_list.js"></script>
@@ -32,9 +31,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<!-- Preloader for API -->
-<div id="preloader"></div>
 
 <!-- Start App Container -->
 <div class="container">
@@ -52,13 +48,14 @@
             <div class="panel-heading"><i class="fa fa-users fa-3x"></i></div>
             <div class="panel-body playerList">
                 <!-- Team List -->
-                <div id='team-dropdown' class="dropdown">
-                    <button id='team-list' class="btn btn-team dropdown-toggle" type="button" data-toggle='dropdown'>Select Teams<span class="caret"></span></button>
+                <div id='teamDropdown' class="dropdown">
+                    <button id='selectTeam' class="btn dropdown-toggle" type="button" data-toggle='dropdown'>Select Team</button>
                 </div>
                 <!-- Player List -->
-                <div id="player-dropdown" class='dropdown'>
-                    <button id='player-list' class="btn btn-player dropdown-toggle" type="button" data-toggle='dropdown'>Select Players<span class="caret"></span></button>
+                <div id="playerDropdown" class='dropdown'>
+                    <button id='selectPlayer' class="btn dropdown-toggle" type="button" data-toggle='dropdown'>Select Player</button>
                 </div>
+                <div class="weekNum">Fantasy Picks</div>
             </div>
         </div>
 
@@ -77,7 +74,7 @@
         </div>
     </div>
 </div>
-<!-- End of App Container -->
+<!-- End App Container -->
 
 <!--Modal -->
 <div id="newsModal" class="modal fade" role="dialog">
