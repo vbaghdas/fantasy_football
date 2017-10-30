@@ -1,5 +1,5 @@
 body {
-    background: #222;
+    background: url(../assets/images/background.jpg);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -21,6 +21,7 @@ body {
     position: absolute;
     left: 100%;
     white-space: nowrap;
+    margin: 0 auto;
 }
 
 /*Main App Area*/
