@@ -12,7 +12,7 @@ body {
     background-color: rgb(20, 20, 20);
     border: solid black;
     box-sizing:border-box;
-    padding: 15px;
+    padding: 10px;
     color: #222;
 }
 .sportsTicker .tickerItem {
