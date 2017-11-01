@@ -50,7 +50,7 @@ function SportsTicker () {
                 $('.sportsTicker').append($div);
                 
                 //Animates the scrolling text to the left of the viewport and removes them
-                $div.animate({left: "-20%"}, newCrawlerTime, 'linear', function(){
+                $div.animate({left: "-40%"}, newCrawlerTime, 'linear', function(){
                     teamScheduleArrItems.push($(this).text());
                     $(this).remove();
                 });
