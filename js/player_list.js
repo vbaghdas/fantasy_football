@@ -149,6 +149,7 @@ function PlayerList() {
             $('#selectTeam').css('animation', 'none');
             $('#selectPlayer').css('visibility', 'initial');
             $('#selectPlayer').css('animation', 'pulse2 5s infinite');
+            $('#fantasyPicks').css('visibility', 'initial');
         })
     }})(this);
     this.init();
