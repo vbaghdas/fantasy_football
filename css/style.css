@@ -229,6 +229,7 @@ body {
 }
 .newsHeader .btn-warning {
     float: right;
+    margin: 5px;
     color: goldenrod!important;
     background: none!important;
     border-color: goldenrod;
@@ -280,7 +281,7 @@ body {
     transition: all .5s ease-in-out;
 }
 
-/*Media Queries for Panel Responsiveness*/
+/* Mobile Responsive */
 @media screen and (max-width: 991px){
     .headlines {
         justify-content: center;
