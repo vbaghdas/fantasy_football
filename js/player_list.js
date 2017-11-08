@@ -107,6 +107,7 @@ function PlayerList() {
             $addedPlayer[0].playerInfo = playerObj;
             $('.playerList').append($addedPlayer);
             $($addedPlayer).append($game, $salary, $fantasyPoints);
+            $('#fantasyPicks').css('visibility', 'initial');
 
             // Send team object to twitter feed
             playertwitter.twitterFeed(playerObj.team);
@@ -149,7 +150,6 @@ function PlayerList() {
             $('#selectTeam').css('animation', 'none');
             $('#selectPlayer').css('visibility', 'initial');
             $('#selectPlayer').css('animation', 'pulse2 5s infinite');
-            $('#fantasyPicks').css('visibility', 'initial');
         })
     }})(this);
     this.init();
