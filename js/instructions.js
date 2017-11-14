@@ -9,5 +9,5 @@ function instructionsModal() {
     });
     $('.modal-body').append($iframe);
 
-    $(".modal-body iframe").attr("src", 'http://vachebaghdassarian.com/fantasy_football/images/info.mp4');
+    $(".modal-body iframe").attr("src", 'http://vachebaghdassarian.com/fantasy_football/assets/images/info.mp4');
 }
