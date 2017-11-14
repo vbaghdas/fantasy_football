@@ -247,7 +247,7 @@ body {
 
 /* Modal */
 .modal-content {
-    background: #222;
+    background: rgba(34,34,34,0.9);
     color: goldenrod;
     padding: 10px;
 }
@@ -258,7 +258,7 @@ body {
     position: relative;
     height: 0;
     overflow: hidden;
-    padding-bottom: 100%;
+    padding-bottom: 65%;
 }
 .modal-body iframe {
     position: absolute;

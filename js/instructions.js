@@ -1,13 +1,21 @@
 $(document).ready(instructionsModal);
 
 function instructionsModal() {
+    //Show modal on page load
     $('#newsModal').modal("show"); 
-    $('.modal-title').text('Welcome to Fantasy Football');
+    $('.modal-title').text('Fantasy Football Instructions');
 
-    var $iframe = $('<iframe>', {
-        src: this.newsArticle,
+    var video = $('<video>', {
+        autoplay: 'autoplay',
+        width: '100%'
     });
-    $('.modal-body').append($iframe);
+    var source = $('<source>', {
+        src: './assets/images/info.mp4',
+        type: 'video/mp4'
+    });
 
-    $(".modal-body iframe").attr("src", 'http://vachebaghdassarian.com/fantasy_football/assets/images/info.mp4');
+    //Append video source to the modal body
+    $(video).append(source);
+    $('.modal-body').append(video);
 }
+
