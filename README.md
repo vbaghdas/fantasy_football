@@ -1,6 +1,7 @@
 # FANTASY FOOTBALL
 
-## Technologies: HTML5, CSS3, JavaScript, jQuery, AJAX
+## Technologies: JavaScript, jQuery, AJAX, HTML5, CSS3
+### Paradigms: OOP
 
 #### Description
 
