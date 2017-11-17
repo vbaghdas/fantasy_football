@@ -246,11 +246,13 @@ body {
 }
 
 /* Modal */
+.modal {
+    overflow-y: scroll;
+}
 .modal-content {
     background: rgba(34,34,34,0.9);
     color: goldenrod;
     padding: 10px;
-    z-index: 1;
 }
 .modal-header button {
     color: #FFF;
