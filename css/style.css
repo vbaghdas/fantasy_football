@@ -246,6 +246,11 @@ body {
 }
 
 /* Modal */
+.modal-scroll {
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .modal-content {
     background: rgba(34,34,34,0.9);
     color: goldenrod;
