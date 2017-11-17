@@ -261,6 +261,7 @@ body {
     padding-bottom: 65%;
 }
 .modal-body iframe {
+    -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0;
     left: 0;
