@@ -247,7 +247,8 @@ body {
 
 /* Modal */
 .modal {
-    -webkit-overflow-scrolling: auto
+    -webkit-overflow-scrolling: auto !important;
+    overflow-y: auto !important;
 }
 .modal-content {
     background: rgba(34,34,34,0.9);
