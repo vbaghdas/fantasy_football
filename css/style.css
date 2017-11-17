@@ -246,6 +246,10 @@ body {
 }
 
 /* Modal */
+.modal {
+    overflow: initial;
+    position: static;
+}
 .modal-content {
     background: rgba(34,34,34,0.9);
     color: goldenrod;
