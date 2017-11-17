@@ -250,6 +250,7 @@ body {
     background: rgba(34,34,34,0.9);
     color: goldenrod;
     padding: 10px;
+    z-index: 1;
 }
 .modal-header button {
     color: #FFF;
@@ -261,7 +262,6 @@ body {
     padding-bottom: 65%;
 }
 .modal-body iframe {
-    -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 0;
     left: 0;
