@@ -246,11 +246,6 @@ body {
 }
 
 /* Modal */
-.modal-scroll {
-    max-height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
 .modal-content {
     background: rgba(34,34,34,0.9);
     color: goldenrod;
@@ -262,8 +257,7 @@ body {
 .modal-body {
     position: relative;
     height: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
     padding-bottom: 65%;
 }
 .modal-body iframe {
