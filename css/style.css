@@ -212,6 +212,10 @@ body {
 }
 .playerTweets .fa-youtube {
     color: #EA3814!important;
+    font-size: 1.6em;
+    position: absolute;
+    bottom: 10%;
+    right: 3%;
 }
 
 /*Panel Three - News Feed*/

@@ -109,12 +109,7 @@ function PlayerTwitter(){
 			}
 		});
 		var $youtubeLogo = $('<i>',{
-			class: 'fa fa-youtube fa-lg',
-			css: {
-				'float': 'right',
-				'color': 'red',
-				'font-size': '1.6em'
-			}
+			class: 'fa fa-youtube'
 		});
 		var $aTag = $('<a>',{
 				href: teamYoutube.youtubeURL,
