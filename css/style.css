@@ -6,7 +6,7 @@ body {
 
 /*Sports Ticker*/
 .sportsTicker {
-    height: 8vh;
+    height: 9vh;
     overflow: hidden;
     position: relative;
     background-color: rgb(20, 20, 20);
@@ -16,7 +16,7 @@ body {
     color: #222;
 }
 .sportsTicker .tickerItem {
-    font-size: 24px;
+    font-size: 3.5vmin;
     color: #39A279;
     position: absolute;
     left: 100%;
@@ -307,9 +307,6 @@ body {
     }
 }
 @media screen and (max-width: 768px){
-    .sportsTicker .tickerItem {
-        font-size: 3.75vw;
-    }
     .headlines {
         justify-content: center;
     }

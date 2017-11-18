@@ -8,7 +8,7 @@ function SportsTicker () {
     //AJAX call returns daily game schedule as a Javascript object
     this.ajaxCall = function () {
         $.ajax({
-            url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/daily_game_schedule.json?fordate=20171203',
+            url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/full_game_schedule.json?date=until-tomorrow',
             dataType: 'json',
             method: 'get',
             success: this.success,
@@ -19,14 +19,13 @@ function SportsTicker () {
             }
         });
     };
-
     //Success function from ajax call takes response as the parameter, filters game schedule and pushes to the array
     this.success = function (response) {
         var teamScheduleArr = [];
-        for (var i = 0; i < response.dailygameschedule.gameentry.length; i++) {
-            var awayTeam = response.dailygameschedule.gameentry[i].awayTeam.Abbreviation;
-            var homeTeam = response.dailygameschedule.gameentry[i].homeTeam.Abbreviation;
-            var time = response.dailygameschedule.gameentry[i].time;
+        for (var i = 0; i < response.fullgameschedule.gameentry.length; i++) {
+            var awayTeam = response.fullgameschedule.gameentry[i].awayTeam.Abbreviation;
+            var homeTeam = response.fullgameschedule.gameentry[i].homeTeam.Abbreviation;
+            var time = response.fullgameschedule.gameentry[i].time;
             teamScheduleArr.push(awayTeam + ' vs ' + homeTeam + ' @ ' + time);
         }
 
