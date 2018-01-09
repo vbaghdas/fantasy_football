@@ -177,7 +177,6 @@ body {
     margin: 0;
     position: relative;
     padding: 15px;
-    margin-bottom: 2%;
     background-color: #222;
     color: #FFF;
     font-weight: bold;
@@ -210,8 +209,12 @@ body {
     margin-right: 5px;
     float: left;
 }
+.playerTweets .fa-twitter {
+    color: #fff;
+    font-size: 1.6em;
+}
 .playerTweets .fa-youtube {
-    color: #EA3814!important;
+    color: #EA3814;
     font-size: 1.6em;
     position: absolute;
     bottom: 10%;

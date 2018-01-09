@@ -19,38 +19,38 @@ function PlayerTwitter(){
 	}
 
 	this.teamArray = {
-		Cardinals: 'AZCardinals',
-		Giants: 'Giants',
-		Colts: 'Colts',
+		// Cardinals: 'AZCardinals',
+		// Giants: 'Giants',
+		// Colts: 'Colts',
 		Eagles: 'Eagles',
 		Jaguars: 'Jaguars',
 		Panthers: 'Panthers',
 		Bears: 'ChicagoBears',
-		Lions: 'Lions',
-		'49ers': '49ers',
-		Browns: 'Browns',
-		Redskins: 'Redskins',
-		Buccaneers: 'TBBuccaneers',
-		Packers: 'packers',
+		// Lions: 'Lions',
+		// '49ers': '49ers',
+		// Browns: 'Browns',
+		// Redskins: 'Redskins',
+		// Buccaneers: 'TBBuccaneers',
+		// Packers: 'packers',
 		Chiefs: 'Chiefs',
 		Saints: 'Saints',
 		Patriots: 'Patriots',
 		Vikings: 'Vikings',
 		Bills: 'buffalobills',
-		Bengals: 'Bengals',
+		// Bengals: 'Bengals',
 		Rams: 'RamsNFL',
-		Seahawks: 'Seahawks',
-		Ravens: 'Ravens',
-		Dolphins: 'MiamiDolphins',
+		// Seahawks: 'Seahawks',
+		// Ravens: 'Ravens',
+		// Dolphins: 'MiamiDolphins',
 		Steelers: 'steelers',
 		Titans: 'Titans',
-		Broncos: 'Broncos',
-		Texans: 'HoustonTexans',
-		Jets: 'nyjets',
+		// Broncos: 'Broncos',
+		// Texans: 'HoustonTexans',
+		// Jets: 'nyjets',
 		Falcons: 'AtlantaFalcons',
-		Raiders: 'RAIDERS',
-		Cowboys: 'dallascowboys',
-		Chargers: 'Chargers'
+		// Raiders: 'RAIDERS',
+		// Cowboys: 'dallascowboys',
+		// Chargers: 'Chargers'
 		};
 
 	//Function handles Twitter feed and YouTube link
@@ -103,10 +103,6 @@ function PlayerTwitter(){
 		});
 		var $twitterLogo = $('<i>',{
 			class: 'fa fa-twitter',
-			css: {
-				'font-size': '1.6em',
-				'color': 'white'
-			}
 		});
 		var $youtubeLogo = $('<i>',{
 			class: 'fa fa-youtube'

@@ -8,7 +8,7 @@ function SportsTicker () {
     //AJAX call returns daily game schedule as a Javascript object
     this.ajaxCall = function () {
         $.ajax({
-            url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/full_game_schedule.json?date=until-tomorrow',
+            url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2018-playoff/full_game_schedule.json?date=until-tomorrow',
             dataType: 'json',
             method: 'get',
             success: this.success,

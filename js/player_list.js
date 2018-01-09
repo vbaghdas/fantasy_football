@@ -11,13 +11,14 @@ function PlayerList() {
     //AJAX call returns NFL Player Roster as a Javascript object
     $.ajax({
         method: 'GET',
-        url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2017-regular/daily_dfs.json',
+        url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2018-playoff/daily_dfs.json',
         dataType: 'json',
         async: true,
         headers: {
             "Authorization": "Basic " + btoa("vbaghdas" + ":" + "consoles1")
         },
         success: (response) => {
+            console.log(response.dailydfs.dfsEntries[0]);
             for(var i = 0; i < response.dailydfs.dfsEntries[0].dfsRows.length; i++) {
                 this.players.push({
                     firstName: response.dailydfs.dfsEntries[0].dfsRows[i].player.FirstName,
